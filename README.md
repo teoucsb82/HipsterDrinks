@@ -19,3 +19,6 @@
 * Get search functionality working
 
 
+## Wednesday goals
+-- add drinks crud
+-- add user/drinks relationships
