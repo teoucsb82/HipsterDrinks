@@ -3,22 +3,25 @@
 ## TODO
 
 ### Main Page
-* Below carousel need pictures of top X drinks
+[] Below carousel need pictures of top X drinks
+[] Flash Errors
 
 ### User Page
-* Follow other users
-* Build a virtual bar w/ ingredients
+[] Follow other users
+[] Build a virtual bar w/ ingredients
 
 ### Drinks index page
-* make it completely filterable by bunch of options - checkboxes for alcohols, mixers, light/dark liquor
+[] make it completely filterable by bunch of options - checkboxes for alcohols, mixers, light/dark liquor
 
 ### Drink show page
-* 
+[]
 
 ## Overall
-* Get search functionality working
+[] Get search functionality working
 
 
 ## Wednesday goals
--- add drinks crud
--- add user/drinks relationships
+[] add drinks crud
+[] add user/drinks relationships
+[] modals
+[] flash errors

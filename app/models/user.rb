@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 	validates :password_digest, :presence => true
 	after_initialize :ensure_session_token
 
+	has_many :drinks, :dependent => :destroy
+
 	def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
     return (user && user.is_password?(password)) ? user : nil
