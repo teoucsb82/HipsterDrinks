@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-	before_filter :correct_user, :only => [:edit, :update, :destroy]
+	before_filter :correct_user, :only => [:edit, :update]
+	before_filter :admin_user, :only => [:destroy]
+  
+  def destroy
+    get_user
+    flash[:success] = "User #{@user.email} deleted."
+    @user.destroy
+    redirect_to users_url
+  end
 
 	def edit
 		get_user
@@ -65,10 +73,14 @@ class UsersController < ApplicationController
 
 	def correct_user
 		get_user
-		unless logged_in? && current_user == @user
+		unless logged_in? && (current_user == @user || current_user.admin?)
 			flash[:danger] = "You cannot edit other users"
 			redirect_to root_url
 		end
 	end
+
+	def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 
 end
