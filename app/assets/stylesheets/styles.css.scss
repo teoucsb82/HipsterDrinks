@@ -1,4 +1,7 @@
 @import 'bootstrap';
+$grayMediumLight: #eaeaea;
+$grayLighter: #cecece;
+$blue: #0000FF;
 
 .carousel .item {-webkit-transition: opacity 3s; -moz-transition: opacity 3s; -ms-transition: opacity 3s; -o-transition: opacity 3s; transition: opacity 3s;}
 .carousel .active.left {left:0;opacity:0;z-index:2;}
@@ -79,7 +82,7 @@ textarea {
 
 /* sidebar */
 
-$grayMediumLight: #eaeaea;
+
 
 aside {
   section {
@@ -109,3 +112,31 @@ aside {
   margin-right: 10px;
 }
 
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+}

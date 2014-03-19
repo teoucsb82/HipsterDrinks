@@ -54,13 +54,19 @@ class UsersController < ApplicationController
     end
   end
 	
-	private
-	def authenticate_user
-		unless logged_in?
-			flash[:danger] = "Please sign in."
-			redirect_to new_session_url
-		end
-	end
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
 
 	private
 	def user_params
