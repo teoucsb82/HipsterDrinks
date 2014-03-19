@@ -12,10 +12,11 @@ class SessionsController < ApplicationController
     )
 
 		if @user.nil?
-			flash.now[:errors] = ["Invalid login/password"]
+			flash.now[:danger] = "Invalid login credentials"
 			render :new
 		else
 			self.current_user = @user
+			flash[:success] = "Welcome back, #{@user.email}!"
 			redirect_to root_url
 		end	
 	end

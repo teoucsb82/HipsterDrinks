@@ -10,16 +10,26 @@ class UsersController < ApplicationController
 
 		if @user.save
 			self.current_user = @user
-			redirect_to root_url
+		  flash[:success] = "Welcome to Hipster Drinks!"
+			redirect_to @user
 		else
-			flash.now[:errors] = @user.errors.full_messages
+			flash.now[:danger] = @user.errors.full_messages
 			render :new
 		end
+	end
+
+	def show
+		get_user
+		render :show
 	end
 
 	private
 	def user_params
 		params.require(:user).permit(:email, :password, :session_token)
+	end
+
+	def get_user
+		@user = User.find(params[:id])
 	end
 
 end
