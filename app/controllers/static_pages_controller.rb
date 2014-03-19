@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 	def home
-		TestMailer.test.deliver
+		# TestMailer.test.deliver
 		render :home
 	end
 end
