@@ -2,7 +2,6 @@ class DrinksController < ApplicationController
 	before_filter :authenticate_user, :except => [:index, :show]
 	before_filter :authenticate_author, :only => [:edit, :update, :destroy]
 
-
 	def create
 		@drink = Drink.new(drink_params)
 		@drink.user_id = current_user.id
@@ -53,7 +52,7 @@ class DrinksController < ApplicationController
 		if @drink.update_attributes!(drink_params)
     	redirect_to drink_url(@drink)
     else
-			flash.now[:errors] = @drink.errors.full_messages
+			flash.now[:danger] = @drink.errors.full_messages
 			render :edit
 		end
 	end
@@ -67,17 +66,10 @@ class DrinksController < ApplicationController
 		@drink = Drink.find(params[:id])
 	end
 
-	def authenticate_user
-		unless logged_in?
-			flash[:errors] = ["You need to be logged in to create a drink"]
-			redirect_to root_url
-		end
-	end
-
 	def authenticate_author
 		get_drink
 		unless logged_in? && current_user == @drink.user
-			flash[:errors] = ["You cannot modify someone else's drink"]
+			flash[:danger] = ["You cannot modify someone else's drink"]
 			redirect_to drinks_url
 		end
 	end

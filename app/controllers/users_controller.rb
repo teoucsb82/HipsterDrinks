@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+	before_filter :correct_user, :only => [:edit, :update, :destroy]
+
+	def edit
+		get_user
+		render :edit
+	end
 
 	def new
 		@user = User.new
@@ -18,9 +24,34 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def index
+		@users = User.all
+		render :index
+	end
+
 	def show
 		get_user
 		render :show
+	end
+
+	def update
+  	get_user
+
+    if @user.update_attributes(user_params)
+      flash[:success] = "Account updated!"
+      redirect_to user_url(@user)
+    else
+    	flash.now[:danger] = @user.errors.full_messages
+      render 'edit'
+    end
+  end
+	
+	private
+	def authenticate_user
+		unless logged_in?
+			flash[:danger] = "Please sign in."
+			redirect_to new_session_url
+		end
 	end
 
 	private
@@ -30,6 +61,14 @@ class UsersController < ApplicationController
 
 	def get_user
 		@user = User.find(params[:id])
+	end
+
+	def correct_user
+		get_user
+		unless logged_in? && current_user == @user
+			flash[:danger] = "You cannot edit other users"
+			redirect_to root_url
+		end
 	end
 
 end

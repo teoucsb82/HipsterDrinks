@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'figaro'
 gem 'sendgrid'
 gem 'backbone-on-rails'
+gem 'faker'
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.

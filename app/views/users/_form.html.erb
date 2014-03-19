@@ -1,4 +1,12 @@
-<!-- <form action="<% users_url %>" method="post">
+<% action = (flag == :new) ? users_url : user_url(user) %>
+<% method = (flag == :new) ? "POST" : "PATCH" %>
+<% message = (flag == :new) ? "Sign Up" : "Edit User" %>
+
+<h1><%= message %></h1>
+<hr>
+
+<form action="<%= action %>" method="post">
+	<input type="hidden" name="_method" value="<%= method %>">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
 	<div class="input-group">
@@ -10,22 +18,10 @@
 
 	<div class="input-group">
 	  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-	  <input type="password" class="form-control" name="user[password]" placeholder="Enter password">
+	  <input type="password" class="form-control" name="user[password]" placeholder="Enter Password">
 	</div>
 	
 	<br>
 
-	<input type="submit" value="Sign Up" class="btn btn-primary">
-</form> -->
-
-<form action="<%= users_url %>" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-	<label for="username">Username: </label>
-	<input type="text" name="user[email]" id="username">
-
-	<label for="password">Password: </label>
-	<input type="password" name="user[password]" id="password">
-	
-	<input type="submit" value="Sign Up">
+	<input type="submit" value="<%= message %>" class="btn btn-primary">
 </form>
