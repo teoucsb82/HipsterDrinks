@@ -1,17 +1,12 @@
-<div class="container">
-	<h1>Drinks Index</h1>
-
-	<ul>
-		<% @drinks.each do |drink| %>
-			<li>
-				<%= link_to drink.name, drink_url(drink) %>
-				<% if current_user == drink.user %>
-	        <%= link_to 'Edit', edit_drink_url(drink), class: "btn btn-success" %>
-        	<%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        <% end %>
-			</li>
-		<% end %>
-	</ul>
-
-	<%= link_to "New Drink", new_drink_url %>
-</div>
+<h1>Drinks Index</h1>
+<ul>
+	<% @drinks.each do |drink| %>
+		<li>
+			<%= link_to drink.name, drink_url(drink) %>
+			<% if current_user == drink.user %>
+				<%= link_to "Edit drink", edit_drink_url(drink), class: "btn btn-success" %>
+				<%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>

@@ -2,6 +2,7 @@ class DrinksController < ApplicationController
 	before_filter :authenticate_user, :except => [:index, :show]
 	before_filter :authenticate_author, :only => [:edit, :update, :destroy]
 
+
 	def create
 		@drink = Drink.new(drink_params)
 		@drink.user_id = current_user.id
@@ -26,7 +27,10 @@ class DrinksController < ApplicationController
 
 	def index
 		@drinks = Drink.all
-		render :index
+		respond_to do |format|
+      format.html { render :index }
+      format.json { render :json => @drinks }
+    end
 	end
 
 	def new
@@ -36,7 +40,11 @@ class DrinksController < ApplicationController
 
 	def show
 		get_drink
-		render :show
+		
+		respond_to do |format|
+      format.html { render :show }
+      format.json { render :json => @drink }
+    end
 	end
 
 	def update
