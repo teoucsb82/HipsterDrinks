@@ -1,0 +1,7 @@
+<ul>
+  <% _(drinks).each(function (drink) { %>
+    <li class="drink" data-id="<%= drink.id %>">
+      <%= drink.name %>
+    </li>
+  <% }); %>
+</ul>

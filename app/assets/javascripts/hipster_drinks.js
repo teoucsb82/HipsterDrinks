@@ -4,11 +4,11 @@ window.HipsterDrinks = {
   Views: {},
   Routers: {},
   initialize: function($rootEl, tasks) {
-    console.log("and we're off");
-    console.log(tasks);
+    new HipsterDrinks.Routers.DrinksRouter($rootEl, tasks);
+    Backbone.history.start();
   }
 };
 
-$(document).ready(function(){
-  HipsterDrinks.initialize();
-});
+// $(document).ready(function(){
+//   HipsterDrinks.initialize();
+// });

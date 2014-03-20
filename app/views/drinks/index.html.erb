@@ -8,6 +8,8 @@
     var drinks = JSON.parse($("#bootstrapped_drinks_json").html());
 
     // start me up!
-    window.HipsterDrinks.initialize($("body"), drinks);
+    window.HipsterDrinks.initialize($("#index-content"), drinks);
   });
 </script>
+
+<div id="index-content" style="border: 1px solid black"></div>
