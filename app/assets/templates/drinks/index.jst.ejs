@@ -1,0 +1,15 @@
+<ul>
+  <% drinks.each(function (drink) { %>
+    <li>
+      <a href="#/<%= drink.id %>"><%= drink.escape("name") %></a>
+
+      <button class="delete" data-id="<%= drink.id %>">
+        Delete!
+      </button>
+
+      <a href="#/<%= drink.id %>/edit">Edit</a>
+    </li>
+  <% }); %>
+</ul>
+
+<a href="#/new">New Drink</a>

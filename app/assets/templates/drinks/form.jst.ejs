@@ -1,0 +1,15 @@
+<form>
+	<label>Drink Name: 
+		<input type="text" name="name" value="<%= drink.escape("name") %>">
+	</label>
+	<br>
+
+	<label>Drink Description:
+		<textarea name="description"><%= drink.escape("description") %></textarea>
+	</label>
+	<br>
+
+  <input type="submit">
+</form>
+
+<a href="#/">Back</a>

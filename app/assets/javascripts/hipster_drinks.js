@@ -4,7 +4,23 @@ window.HipsterDrinks = {
   Views: {},
   Routers: {},
   initialize: function() {
-    // alert('Hello from Backbone!');
+    HipsterDrinks.drinks = new HipsterDrinks.Collections.Drinks();
+
+    // var indexView = new HipsterDrinks.Views.DrinksIndex({
+    //   collection: HipsterDrinks.drinks
+    // });
+    // $("#drinks-content").html(indexView.render().$el);
+    
+    // HipsterDrinks.drinks.fetch();
+    HipsterDrinks.drinks.fetch({
+      success: function(drinks) {
+        new HipsterDrinks.Routers.Drinks({
+          $rootEl: $("#drinks-content"),
+          drinks: HipsterDrinks.drinks
+        });
+        Backbone.history.start();
+      }
+    });
   }
 };
 
