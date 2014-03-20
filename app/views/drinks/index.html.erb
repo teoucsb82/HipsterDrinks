@@ -1,17 +1,13 @@
-<% provide(:title, 'Drinks Index') %>
-<div class="container">
-	<h1>Drinks Index</h1>
-	<ul>
-		<% @drinks.each do |drink| %>
-			<li>
-				<%= link_to drink.name, drink_url(drink) %>
-				<% if current_user == drink.user %>
-					<%= link_to "Edit drink", edit_drink_url(drink), class: "btn btn-success btn-xs" %>
-					<%= link_to 'Destroy', drink, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
-				<% end %>
-			</li>
-		<% end %>
-	</ul>
+<script type="application/json" id="bootstrapped_drinks_json">
+  <%= Drink.all.to_json.html_safe %>
+</script>
 
-	<%= link_to "Submit a drink", new_drink_url %>
-</div>
+<script type="application/javascript">
+  $(function () {
+    // Bootstrap initial `Drink`s.
+    var drinks = JSON.parse($("#bootstrapped_drinks_json").html());
+
+    // start me up!
+    window.HipsterDrinks.initialize($("body"), drinks);
+  });
+</script>
