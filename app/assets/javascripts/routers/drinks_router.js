@@ -7,7 +7,8 @@ HipsterDrinks.Routers.Drinks = Backbone.Router.extend({
 	routes: {
 		"" : "index",
 		"new" : "new",
-		":id" : "show"
+		":id" : "show",
+		":id/edit" : "edit"
 	},
 
 	index: function() {
@@ -17,7 +18,15 @@ HipsterDrinks.Routers.Drinks = Backbone.Router.extend({
 		this._swapView(view);
 	},
 
+	edit: function(id) {
+		var editView = new HipsterDrinks.Views.DrinkForm({
+			model: this.drinks.get(id)
+		});
+		this._swapView(editView);
+	},
+
 	new: function() {
+		console.log("hi from new")
 		var newDrink = new HipsterDrinks.Models.Drink();
 		var formView = new HipsterDrinks.Views.DrinkForm({
 			collection: HipsterDrinks.drinks,
@@ -27,24 +36,21 @@ HipsterDrinks.Routers.Drinks = Backbone.Router.extend({
 	},
 
 	show: function(id) {
-		var that = this;
-		that._getDrink(id, function(drink) {
-			var formView = new HipsterDrinks.Views.DrinkShow({
-				model: drink
-			});
-			that._swapView(formView);
+		var showView = new HipsterDrinks.Views.DrinkShow({
+			model: this.drinks.get(id)
 		});
-
+		this._swapView(showView);
 	},
 
 	_getDrink: function(id, callback) {
+		var that = this;
 		var drink = HipsterDrinks.drinks.get(id);
 		if(!drink) {
 			drink = new HipsterDrinks.Models.Drink({ id: id });
 			drink.collection = HipsterDrinks.drinks;
 			drink.fetch({
 				success: function() {
-					HipsterDrinks.drinks.add(drink);
+					that.drinks.add(drink);
 					callback(drink);
 				}
 			});

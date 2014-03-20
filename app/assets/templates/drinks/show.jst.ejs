@@ -1,4 +1,7 @@
-<h1>show page</h1>
+<h1><%= drink.escape('name') %></h1>
 
-<h3><%= drink.name %></h3>
-<p><%= drink.description %></p>
+<p>
+	<%= drink.escape('description') %>
+</p>
+
+<a href="#/">Index</a>
