@@ -31,4 +31,5 @@ group :development do
 	gem 'better_errors'
 	gem 'annotate'
 	gem 'capybara'
+	gem 'letter_opener'
 end
