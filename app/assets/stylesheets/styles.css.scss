@@ -3,12 +3,12 @@ $grayMediumLight: #eaeaea;
 $grayLighter: #cecece;
 $blue: #0000FF;
 
-.carousel .item {-webkit-transition: opacity 3s; -moz-transition: opacity 3s; -ms-transition: opacity 3s; -o-transition: opacity 3s; transition: opacity 3s;}
-.carousel .active.left {left:0;opacity:0;z-index:2;}
-.carousel .next {left:0;opacity:1;z-index:1;}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
+.carousel .item {-webkit-transition: opacity 3s; -moz-transition: opacity 3s; -ms-transition: opacity 3s; -o-transition: opacity 3s; transition: opacity 3s;}
+.carousel .active.left {left:0;opacity:0;z-index:2;}
+.carousel .next {left:0;opacity:1;z-index:1;}
 
 .carousel {
   margin-bottom: 60px;
@@ -27,6 +27,7 @@ $blue: #0000FF;
   background-color:#bbb;
   overflow:hidden;
 }
+
 .carousel img {
   position: absolute;
   top: 0;
@@ -61,9 +62,9 @@ html {
   overflow-y: scroll;
 }
 
-// body {
-//   padding-top: 60px;
-// }
+body {
+  margin-top: 1%;
+}
 
 section {
   overflow: auto;
@@ -78,6 +79,10 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.hidden {
+  display: none;
 }
 
 /* sidebar */
@@ -150,4 +155,16 @@ li.drink {
   margin: 10px;
 
   padding: 10px;
+}
+
+/* Alert */
+.alert-dismissable {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
 }

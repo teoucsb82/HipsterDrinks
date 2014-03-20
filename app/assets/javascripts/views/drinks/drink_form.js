@@ -18,19 +18,24 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
     var $fields = $(event.currentTarget).parent().children().children();
     $fields.removeClass("alert alert-danger alert-success");
 
+
     if ($('#drink-name').val() === "") {
+      $('#drink-name').removeClass("alert alert-success");
       $('#drink-name').addClass("alert alert-danger");
     } else {
+      $('#drink-name').removeClass("alert alert-danger");
       $('#drink-name').addClass("alert alert-success");
     }
 
     if ($('#drink-description').val() === "") {
+      $('#drink-description').removeClass("alert alert-success");
       $('#drink-description').addClass("alert alert-danger");
     } else {
+      $('#drink-description').removeClass("alert alert-danger");
       $('#drink-description').addClass("alert alert-success");
     }
 
-    if (!$fields.hasClass("alert-danger")) {
+    if ( !$('#drink-name').hasClass("alert-danger") && !$('#drink-description').hasClass("alert-danger")) {
       $('#drink-errors').removeClass("hidden")
       $('#drink-errors').removeClass("alert-danger")
       $('#drink-errors').addClass("alert-success")
@@ -43,6 +48,7 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
       $('#drink-error-strong').text("Oops!")
       $('#drink-error-text').text("Looks like something went wrong...")
     }
+   
 
     var attrs = $(event.target.form).serializeJSON();
     function success () {

@@ -26,7 +26,6 @@ HipsterDrinks.Routers.Drinks = Backbone.Router.extend({
 	},
 
 	new: function() {
-		console.log("hi from new")
 		var newDrink = new HipsterDrinks.Models.Drink();
 		var formView = new HipsterDrinks.Views.DrinkForm({
 			collection: HipsterDrinks.drinks,

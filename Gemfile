@@ -13,7 +13,6 @@ gem 'sendgrid'
 gem 'backbone-on-rails'
 gem 'faker'
 gem 'ejs'
-gem 'filepicker-rails'
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.
