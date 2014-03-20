@@ -29,3 +29,7 @@
 [] add user/drinks relationships
 [] modals
 [] flash errors
+
+## Known issues
+[] Drinks CRUD allows non-logged in users to create drinks. Need to prevent them from having access.
+[] Similar issues for users being able to delete/edit non-posts
