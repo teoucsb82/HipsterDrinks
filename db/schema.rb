@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320204504) do
+ActiveRecord::Schema.define(version: 20140320200428) do
 
   create_table "drinks", force: true do |t|
     t.string   "name",               null: false
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20140320204504) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.string   "filepicker_url"
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"

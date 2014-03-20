@@ -20,6 +20,6 @@ module HipsterDrinks
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     # config.assets.paths << "app/assets/templates"
-    config.filepicker_rails.api_key = ENV["FILEPICKER_API_KEY"]
+    # config.filepicker_rails.api_key = ENV["FILEPICKER_API_KEY"]
   end
 end
