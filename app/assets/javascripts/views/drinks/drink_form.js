@@ -14,9 +14,41 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
 
 	submit: function(event) {
 		event.preventDefault();
+
+		console.log("YOU CLICKED ME");
+
+    var $fields = $(event.currentTarget).parent().children().children();
+    $fields.removeClass("alert alert-danger alert-success");
+
+    if ($('#drink-name').val() === "") {
+      $('#drink-name').addClass("alert alert-danger");
+    } else {
+      $('#drink-name').addClass("alert alert-success");
+    }
+
+    if ($('#drink-description').val() === "") {
+      $('#drink-description').addClass("alert alert-danger");
+    } else {
+      $('#drink-description').addClass("alert alert-success");
+    }
+
+    if (!$fields.hasClass("alert-danger")) {
+      $('#drink-errors').removeClass("hidden")
+      $('#drink-errors').removeClass("alert-danger")
+      $('#drink-errors').addClass("alert-success")
+      $('#drink-error-strong').text("Success!")
+      $('#drink-error-text').text("Drink created!")
+    } else {
+      $('#drink-errors').removeClass("hidden")
+      $('#drink-errors').removeClass("alert-success")
+      $('#drink-errors').addClass("alert-danger")
+      $('#drink-error-strong').text("Oops!")
+      $('#drink-error-text').text("Looks like something went wrong...")
+    }
+
     var attrs = $(event.target.form).serializeJSON();
     function success () {
-      Backbone.history.navigate("", { trigger: true });
+      Backbone.history.navigate("", true );
     }
     this.model.set(attrs);
     if (this.model.isNew()) {

@@ -1,15 +1,20 @@
+<div id="drink-errors" class="hidden alert-dismissable alert-success">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong id="drink-error-strong"></strong> <span id="drink-error-text"><span>
+</div>
+
 <form>
 	<label>Drink Name: 
-		<input type="text" name="name" value="<%= drink.escape("name") %>">
+		<input type="text" name="name" value="<%= drink.escape("name") %>" id="drink-name">
 	</label>
 	<br>
 
 	<label>Drink Description:
-		<textarea name="description"><%= drink.escape("description") %></textarea>
+		<textarea name="description" id="drink-description"><%= drink.escape("description") %></textarea>
 	</label>
 	<br>
 
-  <input type="submit">
+  <input type="submit" id="drink-submit">
 </form>
 
 <a href="#/">Back</a>

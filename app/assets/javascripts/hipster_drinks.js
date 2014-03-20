@@ -5,13 +5,6 @@ window.HipsterDrinks = {
   Routers: {},
   initialize: function() {
     HipsterDrinks.drinks = new HipsterDrinks.Collections.Drinks();
-
-    // var indexView = new HipsterDrinks.Views.DrinksIndex({
-    //   collection: HipsterDrinks.drinks
-    // });
-    // $("#drinks-content").html(indexView.render().$el);
-    
-    // HipsterDrinks.drinks.fetch();
     HipsterDrinks.drinks.fetch({
       success: function(drinks) {
         new HipsterDrinks.Routers.Drinks({
@@ -26,4 +19,5 @@ window.HipsterDrinks = {
 
 $(document).ready(function(){
   HipsterDrinks.initialize();
+
 });
