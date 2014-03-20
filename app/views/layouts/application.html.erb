@@ -11,7 +11,8 @@
 
 <%= render 'layouts/header' %>
 <%= render 'layouts/errors' %>
-
+<%= render 'sessions/form', :flag => :new %>
+<%= render 'users/form', :flag => :new  %>
 <%= yield %>
 
 </body>

@@ -1,20 +1,33 @@
-<h1>Sign In</h1>
-<hr>
+<div class="modal fade" id="modal-window">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div id="sign-up">
+					<h1 align="center">Sign In</h1>
+					<hr>
 
-<form action="<%= session_url %>" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<form action="<%= session_url %>" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-	<div class="input-group">
-	  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-		<input autofocus="true" type="text" class="form-control" name="user[email]" placeholder="Enter Email">
-	</div>
-	<br>
+						<div class="input-group">
+						  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+							<input autofocus="true" type="text" class="form-control" name="user[email]" placeholder="Enter Email">
+						</div>
+						<br>
 
-	<div class="input-group">
-	  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-	  <input type="password" class="form-control" name="user[password]" placeholder="Enter Password">
-	</div>
-	<br>
-	
-	<input type="submit" value="Sign In" class="btn btn-primary">
-</form>
+						<div class="input-group">
+						  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+						  <input type="password" class="form-control" name="user[password]" placeholder="Enter Password">
+						</div>
+						<br>
+						
+						<center>
+							<input type="submit" value="Sign In" class="btn btn-primary btn-lg">
+						</center>
+					</form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

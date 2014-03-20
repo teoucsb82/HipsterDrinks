@@ -1,7 +1,26 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-4">
-			<%= render 'form' %>
+			<h1>Sign In</h1>
+			<hr>
+
+			<form action="<%= session_url %>" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+				<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+					<input autofocus="true" type="text" class="form-control" name="user[email]" placeholder="Enter Email">
+				</div>
+				<br>
+
+				<div class="input-group">
+				  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+				  <input type="password" class="form-control" name="user[password]" placeholder="Enter Password">
+				</div>
+				<br>
+				
+				<input type="submit" value="Sign In" class="btn btn-primary">
+			</form>
 		</div>
 	</div>
 </div>

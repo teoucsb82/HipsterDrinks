@@ -27,8 +27,8 @@ class UsersController < ApplicationController
 		  flash[:success] = "Welcome to Hipster Drinks!"
 			redirect_to @user
 		else
-			flash.now[:danger] = @user.errors.full_messages
-			render :new
+			flash[:danger] = @user.errors.full_messages
+			redirect_to new_user_url
 		end
 	end
 
@@ -57,20 +57,20 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user = User.find(params[:id])
-    @users = @user.followed_users.paginate(page: params[:page])
+    @users = @user.followed_users#.paginate(page: params[:page])
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers#.paginate(page: params[:page])
     render 'show_follow'
   end
 
 	private
 	def user_params
-		params.require(:user).permit(:email, :password, :session_token)
+		params.require(:user).permit(:email, :password, :session_token, :first_name, :last_name, :about)
 	end
 
 	def get_user
