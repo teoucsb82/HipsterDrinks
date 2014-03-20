@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-
+		@user.email.downcase!
 		if @user.save
 			self.current_user = @user
 		  flash[:success] = "Welcome to Hipster Drinks!"

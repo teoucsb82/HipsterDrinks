@@ -1,15 +1,2 @@
-<script type="application/json" id="bootstrapped_drinks_json">
-  <%= Drink.all.to_json.html_safe %>
-</script>
-
-<script type="application/javascript">
-  $(function () {
-    // Bootstrap initial `Drink`s.
-    var drinks = JSON.parse($("#bootstrapped_drinks_json").html());
-
-    // start me up!
-    window.HipsterDrinks.initialize($("#index-content"), drinks);
-  });
-</script>
-
-<div id="index-content"></div>
+<div class="container" id="drinks-index-content">
+</div>
