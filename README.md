@@ -4,17 +4,21 @@
 
 ### Main Page
 [] Below carousel need pictures of top X drinks
-[] Flash Errors
+[X] Flash Errors
 
 ### User Page
-[] Follow other users
+[X] Follow other users
 [] Build a virtual bar w/ ingredients
 
 ### Drinks index page
 [] make it completely filterable by bunch of options - checkboxes for alcohols, mixers, light/dark liquor
+[] Make it so users can only delete/edit their own drinks
 
 ### Drink show page
 []
+
+### Drinks new page
+[] Form for submitting drinks
 
 ## Overall
 [] Get search functionality working

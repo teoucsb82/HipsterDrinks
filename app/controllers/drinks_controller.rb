@@ -1,4 +1,7 @@
 class DrinksController < ApplicationController
+	# before_filter :authenticate_user, :except => [:index, :show]
+	# before_filter :authenticate_author, :only => [:edit, :update, :destroy]
+
 	respond_to :json
 	respond_to :html, :only => [:index]
 
@@ -44,7 +47,7 @@ class DrinksController < ApplicationController
 
 	private
 	def drink_params
-		params.require(:drink).permit(:name, :user_id, :description)
+		params.require(:drink).permit(:name, :user_id, :description, :image)
 	end
 
 	def get_drink

@@ -15,8 +15,6 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
 	submit: function(event) {
 		event.preventDefault();
 
-		console.log("YOU CLICKED ME");
-
     var $fields = $(event.currentTarget).parent().children().children();
     $fields.removeClass("alert alert-danger alert-success");
 
