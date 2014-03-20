@@ -8,7 +8,7 @@ class DrinksController < ApplicationController
 		if @drink.save
 			render :json => @drink
 		else
-			render :json => @drink
+			render :json => @drink.errors.full_messages, :status => 422
 		end
 	end
 
@@ -19,6 +19,15 @@ class DrinksController < ApplicationController
 			format.json { render :json => @drinks }
 		end
 	end
+
+  def update
+    @drink = Drink.find(params[:id])
+    if @drink.update_attributes(drink_params)
+      render :json => @drink
+    else
+      render :json => @drink.errors.full_messages, :status => 422
+    end
+  end
 
 	private
 	def drink_params
