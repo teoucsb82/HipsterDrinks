@@ -1,7 +1,9 @@
 <ul>
   <% _(drinks).each(function (drink) { %>
-    <li class="drink" data-id="<%= drink.id %>">
-      <%= drink.name %>
+    <li class="drink">
+      <a href="/drinks/#/<%= drink.id %>">
+      	<%= drink.name %>
+    	</a>
     </li>
   <% }); %>
 </ul>
