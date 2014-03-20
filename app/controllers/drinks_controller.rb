@@ -1,6 +1,6 @@
 class DrinksController < ApplicationController
-	# before_filter :authenticate_user, :except => [:index, :show]
-	# before_filter :authenticate_author, :only => [:edit, :update, :destroy]
+	before_filter :authenticate_user, :except => [:index, :show]
+	before_filter :authenticate_author, :only => [:edit, :update, :destroy]
 
 	respond_to :json
 	respond_to :html, :only => [:index]
@@ -53,4 +53,13 @@ class DrinksController < ApplicationController
 	def get_drink
 		@drink = Drink.find(params[:id])
 	end
+
+	def authenticate_author
+		get_drink
+		unless logged_in? && current_user == @drink.user
+			flash[:danger] = ["You cannot modify someone else's drink"]
+			redirect_to drinks_url
+		end
+	end
+	
 end

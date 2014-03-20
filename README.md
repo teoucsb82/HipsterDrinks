@@ -31,5 +31,7 @@
 [] flash errors
 
 ## Known issues
+--ASK A TA HOW TO FIX THIS
 [] Drinks CRUD allows non-logged in users to create drinks. Need to prevent them from having access.
 [] Similar issues for users being able to delete/edit non-posts
+-- SOrt of working, but would like to not display the button / throw an error before acting like it worked
