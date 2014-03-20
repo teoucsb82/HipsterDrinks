@@ -17,13 +17,13 @@ class SessionsController < ApplicationController
 		else
 			self.current_user = @user
 			flash[:success] = "Welcome back, #{@user.email}!"
-			redirect_to root_url
+			redirect_to user_url(@user)
 		end	
 	end
 
 	def destroy
 		logout!
-		redirect_to new_session_url
+		redirect_to root_url
 	end
 	
 end

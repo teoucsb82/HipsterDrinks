@@ -1,6 +1,6 @@
 <li>
   <%= link_to user.email, user %>
-  <% if current_user.admin? && current_user != user %>
+  <% if logged_in? && current_user.admin? && current_user != user %>
     | <%= link_to "delete", user, class: "btn btn-danger btn-xs", method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>
