@@ -1,6 +1,11 @@
-<h1><%= @drink.name %></h1>
-<p>
-	<%= @drink.description %>
-</p>
+<div class="container">
+	<h1><%= @drink.name %></h1>
+	<p>
+		<%= @drink.description %>
+	</p>
+	<p>
+		Created by: <%= User.find(@drink.user_id).email %>
+	</p>
 
-<%= link_to "back", drinks_url %>
+	<%= link_to "back", drinks_url %>
+</div>

@@ -17,6 +17,6 @@ window.HipsterDrinks = {
   }
 };
 
-$(document).ready(function(){
-  HipsterDrinks.initialize();
-});
+// $(document).ready(function(){
+//   HipsterDrinks.initialize();
+// });

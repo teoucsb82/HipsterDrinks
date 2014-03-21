@@ -4,7 +4,7 @@
 	<% @drinks.each do |drink| %>
 		<li>
 			<%= link_to drink.name, drink_url(drink) %>
-			<% if drink.user_id == current_user.id %>
+			<% if logged_in? && drink.user_id == current_user.id %>
 				<%= link_to "Delete drink", drink_url(drink), :method => :delete, class: "btn btn-danger" %>
 			<% end %>
 		</li>

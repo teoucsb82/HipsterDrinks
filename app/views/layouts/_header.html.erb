@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="nav navbar-nav">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Drinks Index", drinks_url %></li>
+        <li><%= link_to "All Drinks", drinks_url %></li>
         <li><%= link_to "Users Index", users_url %></li>
       </ul>
     </div>
@@ -22,11 +22,12 @@
       <ul class="nav navbar-nav">
         
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+
+      <form class="navbar-form navbar-left" action="<%= drinks_url %>" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search all drinks">
+          <input type="text" class="form-control" placeholder="Find a cocktail" id="search" name="search">
         </div>
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        <button type="submit" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search"></span></button>
       </form>
 
       <ul class="nav navbar-nav navbar-right">

@@ -36,7 +36,8 @@ class DrinksController < ApplicationController
 	end
 
 	def index
-		@drinks = Drink.all
+		@autocomplete_items = Drink.all
+		@drinks = Drink.search(params[:search])
 		respond_to do |format|
 			format.html { render :index }
 			format.json { render :json => @drinks }
