@@ -15,9 +15,9 @@
     <div class="nav navbar-nav">
       <ul class="nav navbar-nav">
         <li><%= link_to "All Drinks", drinks_url %></li>
-        <%# if logged_in? %>
+        <% if logged_in? %>
           <li><button class="btn btn-primary header-button" data-toggle="modal" data-target="#addDrinkModal"><span class="glyphicon glyphicon-plus"></span> Create A Cocktail</button></li>
-        <%# end %>
+        <% end %>
         
       </ul>
     </div>
