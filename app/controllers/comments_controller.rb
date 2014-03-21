@@ -10,8 +10,18 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
   
+  def destroy
+    get_comment
+    @comment.destroy
+    redirect_to :back
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:commentable_id, :commentable_type, :body)
+  end
+
+  def get_comment
+    @comment = Comment.find(params[:id])
   end
 end

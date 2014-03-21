@@ -1,9 +1,19 @@
-<h3>New Comment</h3>
-<form action="<%= comments_url %>" method="POST">
-  <label for="comment_body">comment</label>
+<h3>Leave A Message</h3>
+<form class="form-horizontal" action="<%= comments_url %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
   <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
-  <textarea id="comment_body" name="comment[body]"></textarea>
-  <input type="submit" value="Save Comment">
+
+  <div class="form-group">
+    <label for="user-comment" class="col-sm-2 control-label">Message</label>
+    <div class="col-sm-8">
+      <textarea type="textarea" name="comment[body]" class="form-control" id="user-comment" placeholder="Message (255 char max)" rows="3"></textarea>
+    </div>
+  </div>
+ 	
+ 	<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+  		<input type="submit" value="Submit Message" class="btn btn-primary">
+  	</div>
+  </div>
 </form>

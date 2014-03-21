@@ -8,7 +8,7 @@ HipsterDrinks::Application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-	resources :comments, :only => [:create]
+	resources :comments, :only => [:create, :destroy]
 	resource :session, :only => [:new, :create, :destroy]
 
 end

@@ -24,12 +24,7 @@
 			</div>
 
 			<div>
-				<h2>My Comments Wall</h2>
-				<ul>
-					<% @user.comments.each do |comment| %>
-						<li><%= comment.body %></li>
-					<% end %>
-				</ul>
+				<%= render "wall" %>
 				<hr>
 				<%= render "shared/comments_form", commentable_id: @user.id, commentable_type: "User" %>
 			</div>
