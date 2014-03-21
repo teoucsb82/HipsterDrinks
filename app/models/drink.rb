@@ -11,6 +11,8 @@
 #
 
 class Drink < ActiveRecord::Base
+	attr_accessible :photo
+
 	validates :name, presence: true
 	validates :description, presence: true
 	validates :user_id, presence: true
@@ -18,4 +20,10 @@ class Drink < ActiveRecord::Base
 	belongs_to :user
  	has_many :comments, as: :commentable
 	
+	has_attached_file :photo, :styles => {
+        :big => "600x600>",
+        :medium => "300x300>",
+        :small => "150x150>",
+        :thumb => "50x50>"
+      }
 end

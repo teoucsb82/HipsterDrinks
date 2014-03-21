@@ -87,4 +87,14 @@ HipsterDrinks::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => "hipsterdrinks",
+      :access_key_id => ENV["AWSAccessKeyId"],
+      :secret_access_key => ENV["AWSSecretKey"],
+      :s3_host_name => 's3-us-west-2.amazonaws.com' # or whatever your region host name is
+    }
+  }
 end
