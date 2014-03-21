@@ -11,9 +11,6 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  admin              :boolean          default(FALSE)
-#  about              :text
-#  first_name         :string(255)
-#  last_name          :string(255)
 #
 
 class User < ActiveRecord::Base
