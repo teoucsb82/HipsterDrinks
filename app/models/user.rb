@@ -21,11 +21,9 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 
 	has_many :drinks, dependent: :destroy
+	
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_users, :through => :relationships, :source => :followed
-
-	has_many :favorites
-	has_many :favorite_drinks, :through => :favorites, :source => :drink
 
 	has_many :reverse_relationships, 
 					 :foreign_key => "followed_id",
@@ -33,6 +31,15 @@ class User < ActiveRecord::Base
 					 :dependent => :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
  	has_many :comments, as: :commentable
+
+
+	def self.search(search)
+	  if search
+	    find(:all, :conditions => ['email LIKE ?', "%#{search}%"])
+	  else
+	    find(:all)
+	  end
+	end
 
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)

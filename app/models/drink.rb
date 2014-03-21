@@ -2,12 +2,16 @@
 #
 # Table name: drinks
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)      not null
-#  description :text             not null
-#  created_at  :datetime
-#  updated_at  :datetime
-#  user_id     :integer
+#  id                 :integer          not null, primary key
+#  name               :string(255)      not null
+#  description        :text             not null
+#  created_at         :datetime
+#  updated_at         :datetime
+#  user_id            :integer
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
 #
 
 class Drink < ActiveRecord::Base
@@ -20,10 +24,16 @@ class Drink < ActiveRecord::Base
 	belongs_to :user
  	has_many :comments, as: :commentable
 
- 	has_many :favorites
-	has_many :favorite_users, :through => :favorites, :source => :user
+	has_attached_file :photo, 
+										:styles => { :medium => "300x300>", :thumb => "100x100>" }, 
+										:default_url => "/images/:style/missing.png"
 
-	has_many :drink_ingredients
-	has_many :ingredients, :through => :drink_ingredients, :source => :ingredient
+	def self.search(search)
+	  if search
+	    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+	  else
+	    find(:all)
+	  end
+	end
 
 end

@@ -1,8 +1,9 @@
-<form id="searchForm">
+<form id="searchForm" action="/drinks" method="get">
   <div class="form-group col-sm-4 col-sm-offset-2">
     <div class="input-group input-group-lg">
-      <input autofocus="true" type="text" class="form-control typeahead" placeholder="Find a cocktail">
-      <span class="input-group-addon btn"><span class="glyphicon glyphicon-search"></span></span>
+      <input autofocus="true" type="text" class="form-control" placeholder="Find a cocktail" id="drinks-search" name="drinks-search">
+      <!-- <span class="input-group-addon btn"><span class="glyphicon glyphicon-search"></span></span> -->
+      <input type="submit" value="Search">
     </div>
   </div>
 </form>

@@ -13,6 +13,8 @@ gem 'sendgrid'
 gem 'backbone-on-rails'
 gem 'faker'
 gem 'ejs'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.

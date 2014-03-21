@@ -14,10 +14,28 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
 
 	submit: function(event) {
 		event.preventDefault();
+    this.checkInput();   
 
+    var attrs = $(event.target.form).serializeJSON();
+    
+    function success (drink) {  
+      Backbone.history.navigate("#/" + drink.id, true );
+    }
+    this.model.set(attrs);
+    if (this.model.isNew()) {
+      this.collection.create(this.model, {
+        success: success
+      });
+    } else {
+      this.model.save({}, {
+        success: success
+      });
+    }
+  },
+
+  checkInput: function() {
     var $fields = $(event.currentTarget).parent().children().children();
     $fields.removeClass("alert alert-danger alert-success");
-
 
     if ($('#drink-name').val() === "") {
       $('#drink-name').removeClass("alert alert-success");
@@ -47,22 +65,6 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
       $('#drink-errors').addClass("alert-danger")
       $('#drink-error-strong').text("Oops!")
       $('#drink-error-text').text("Looks like something went wrong...")
-    }
-   
-
-    var attrs = $(event.target.form).serializeJSON();
-    function success () {
-      Backbone.history.navigate("", true );
-    }
-    this.model.set(attrs);
-    if (this.model.isNew()) {
-      this.collection.create(this.model, {
-        success: success
-      });
-    } else {
-      this.model.save({}, {
-        success: success
-      });
     }
   }
 });

@@ -59,3 +59,8 @@ drinks
 
 # Thursday
 [] Layout/error testing
+
+
+TODO --
+
+Clean out paperflip/filepicker artifacts/garbage
