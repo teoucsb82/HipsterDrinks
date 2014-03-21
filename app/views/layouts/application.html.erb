@@ -5,9 +5,9 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="current_user" id="current-user-id" value="<%= current_user.id if logged_in? %>">
 </head>
 <body>
-
 
 <%= render 'layouts/header' %>
 <%= render 'layouts/errors' %>

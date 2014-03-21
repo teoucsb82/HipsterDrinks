@@ -19,5 +19,4 @@ window.HipsterDrinks = {
 
 $(document).ready(function(){
   HipsterDrinks.initialize();
-
 });

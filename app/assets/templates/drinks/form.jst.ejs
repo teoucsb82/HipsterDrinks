@@ -7,21 +7,21 @@
 <form class="form-horizontal" role="form">
   <div class="form-group">
     <label for="drink-name" class="col-sm-2 control-label">Drink Name</label>
-    <div class="col-sm-10">
+    <div class="col-sm-6">
       <input type="text" name="name" value="<%= drink.escape("name") %>" class="form-control" id="drink-name" placeholder="Drink Name">
     </div>
   </div>
 
   <div class="form-group">
     <label for="drink-description" class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-10">
+    <div class="col-sm-6">
       <textarea type="textarea" name="description" class="form-control" id="drink-description" placeholder="Description" rows="3"><%= drink.escape("description") %></textarea>
     </div>
   </div>
 
 
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-7 col-sm-1">
         <input type="submit" id="drink-submit" class="btn btn-primary">
     </div>
   </div>
