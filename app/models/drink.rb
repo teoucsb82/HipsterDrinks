@@ -2,16 +2,12 @@
 #
 # Table name: drinks
 #
-#  id                 :integer          not null, primary key
-#  name               :string(255)      not null
-#  description        :text             not null
-#  created_at         :datetime
-#  updated_at         :datetime
-#  user_id            :integer
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer
-#  photo_updated_at   :datetime
+#  id          :integer          not null, primary key
+#  name        :string(255)      not null
+#  description :text             not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#  user_id     :integer
 #
 
 class Drink < ActiveRecord::Base
@@ -26,5 +22,5 @@ class Drink < ActiveRecord::Base
 
  	has_many :favorites
 	has_many :favorite_users, :through => :favorites, :source => :user
-	
+
 end

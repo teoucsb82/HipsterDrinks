@@ -8,7 +8,6 @@ class DrinksController < ApplicationController
 	def create
 		@drink = Drink.new(drink_params)
 		@drink.user_id = current_user.id
-		@drink.photo_file_name = "a.jpg"
 
 		if @drink.save
 			render :json => @drink
@@ -39,6 +38,12 @@ class DrinksController < ApplicationController
 
   def update
     @drink = Drink.find(params[:id])
+    
+    if params[:favorite]
+    	@drink.favorite_users.new(id: current_user)
+   	end
+
+
     if @drink.update_attributes(drink_params)
       render :json => @drink
     else
@@ -48,7 +53,7 @@ class DrinksController < ApplicationController
 
 	private
 	def drink_params
-		params.require(:drink).permit(:name, :user_id, :description, :photo, :photo_file_name)
+		params.require(:drink).permit(:name, :user_id, :description, :favorite)
 	end
 
 	def get_drink
