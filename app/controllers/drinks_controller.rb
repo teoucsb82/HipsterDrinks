@@ -1,87 +1,91 @@
 class DrinksController < ApplicationController
-	before_filter :authenticate_user, :except => [:index, :show]
-	before_filter :authenticate_author, :only => [:edit, :update, :destroy]
+  before_filter :authenticate_user, :except => [:index, :show]
+  before_filter :authenticate_author, :only => [:edit, :update, :destroy]
+  before_action :set_drink, only: [:show, :edit, :update, :destroy]
+  
 
-	respond_to :json
-	respond_to :html, :only => [:index]
-
-	def create
-		@drink = Drink.new(drink_params)
-		@drink.user_id = current_user.id
-
-		if @drink.save
-			flash[:success] = "Drink was created"
-			respond_to do |format|
-				format.html { redirect_to @drink }
-				format.json { render :json => @drink }
-			end
-		else
-			flash.now[:danger] = @drink.errors.full_messages
-			respond_to do |format|
-				format.html { render :new }
-				format.json { render :json => @drink.errors.full_messages, :status => 422 }
-			end
-		end
-	end
-
-	def destroy
-		get_drink
-		if @drink.destroy
-			flash[:success] = "Drink was deleted"
-			redirect_to drinks_url
-		else
-			flash[:danger] = "Something went wrong"
-			redirect_to drinks_url
-		end
-	end
-
-	def index
-		@autocomplete_items = Drink.all
-		@drinks = Drink.search(params[:search])
-		respond_to do |format|
-			format.html { render :index }
-			format.json { render :json => @drinks }
-		end
-	end
-
-	def show
-		get_drink
-		respond_to do |format|
-			format.html { render :show }
-			# format.json { render :json => @drink }
-		end
-	end
-
-  def update
-    @drink = Drink.find(params[:id])
-    
-    if params[:favorite]
-    	@drink.favorite_users.new(id: current_user)
-   	end
-
-
-    if @drink.update_attributes(drink_params)
-      render :json => @drink
-    else
-      render :json => @drink.errors.full_messages, :status => 422
+  # GET /drinks
+  # GET /drinks.json
+  def index
+    @drinks = Drink.search(params[:search])
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :json => @drinks }
     end
   end
 
-	private
-	def drink_params
-		params.require(:drink).permit(:name, :user_id, :description, :filepicker_url)
-	end
+  # GET /drinks/1
+  # GET /drinks/1.json
+  def show
+  end
 
-	def get_drink
-		@drink = Drink.find(params[:id])
-	end
+  # GET /drinks/new
+  def new
+    @drink = Drink.new
+    render :new
+  end
 
-	def authenticate_author
-		get_drink
-		unless logged_in? && current_user == @drink.user
-			flash[:danger] = ["You cannot modify someone else's drink"]
-			redirect_to drinks_url
-		end
-	end
-	
+  # GET /drinks/1/edit
+  def edit
+  end
+
+  # POST /drinks
+  # POST /drinks.json
+  def create
+    @drink = Drink.new(drink_params)
+    @drink.user_id = current_user.id
+
+    respond_to do |format|
+      if @drink.save
+        format.html { redirect_to @drink, notice: 'Drink was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @drink }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @drink.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /drinks/1
+  # PATCH/PUT /drinks/1.json
+  def update
+    respond_to do |format|
+      if @drink.update(drink_params)
+        format.html { redirect_to @drink, notice: 'Drink was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @drink.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /drinks/1
+  # DELETE /drinks/1.json
+  def destroy
+    @drink.destroy
+    respond_to do |format|
+      format.html { redirect_to drinks_url }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_drink
+      @drink = Drink.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def drink_params
+      params.require(:drink).permit(:user_id, :name, :description, :filepicker_url)
+    end
+
+    def authenticate_author
+      set_drink
+      unless logged_in? && current_user == @drink.user
+        flash[:danger] = ["You cannot modify someone else's drink"]
+        redirect_to drinks_url
+      end
+    end
 end

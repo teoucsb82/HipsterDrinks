@@ -8,7 +8,13 @@
 	</p>
 
 	<p>photo</p>
-	<%= filepicker_image_tag @drink.filepicker_url, w: 160, h: 160, fit: 'clip' %>
-
+	<% if @drink.filepicker_url != "" %>
+		<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 160, h: 160, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
+		<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png" %></tr>
+	<% end %>
 	<%= link_to "back", drinks_url %>
+
+	<%= link_to 'Edit', edit_drink_path(@drink) %> |
+	<%= link_to 'Back', drinks_path %>
+
 </div>

@@ -1,22 +1,16 @@
-<% action = (flag == :new) ? drinks_url : drink_url %>
-<% method = (flag == :new) ? "POST" : "PATCH" %>
-<% message = (flag == :new) ? "Add Drink" : "Edit Drink" %>
+<%= simple_form_for(@drink) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+
+    <%= f.label :filepicker_url, "Upload Pic:" %>
+    <%= f.filepicker_field :filepicker_url, dragdrop: true  %>
+  </div>
 
 
-<form action="<%= action %>" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="hidden" name="_method" value="<%= method %>">
-
-	<label>Name
-		<input type="text" name="drink[name]">
-	</label>
-	<br>
-
-	<label>Description
-		<input type="text" name="drink[description]">
-	</label>
-	<br>
-	
-	<input type="submit" value="<%= message %>">
-</form>
-
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

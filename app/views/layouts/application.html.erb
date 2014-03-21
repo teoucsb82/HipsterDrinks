@@ -3,8 +3,8 @@
 <head>
   <title><%= full_title(yield(:title)) %></title>
   <%= filepicker_js_include_tag %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <meta name="current_user" id="current-user-id" value="<%= current_user.id if logged_in? %>">
@@ -15,6 +15,7 @@
 <%= render 'layouts/errors' %>
 <%= render 'sessions/form', :flag => :new %>
 <%= render 'users/form', :flag => :new  %>
+
 <%= yield %>
 
 </body>
