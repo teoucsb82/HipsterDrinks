@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321171004) do
+ActiveRecord::Schema.define(version: 20140321195552) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140321171004) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.string   "filepicker_url"
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"

@@ -10,17 +10,29 @@ class DrinksController < ApplicationController
 		@drink.user_id = current_user.id
 
 		if @drink.save
-			render :json => @drink
+			flash[:success] = "Drink was created"
+			respond_to do |format|
+				format.html { redirect_to @drink }
+				format.json { render :json => @drink }
+			end
 		else
-			render :json => @drink.errors.full_messages, :status => 422
+			flash.now[:danger] = @drink.errors.full_messages
+			respond_to do |format|
+				format.html { render :new }
+				format.json { render :json => @drink.errors.full_messages, :status => 422 }
+			end
 		end
 	end
 
 	def destroy
 		get_drink
-		@drink.destroy
-
-		render :json => nil
+		if @drink.destroy
+			flash[:success] = "Drink was deleted"
+			redirect_to drinks_url
+		else
+			flash[:danger] = "Something went wrong"
+			redirect_to drinks_url
+		end
 	end
 
 	def index
@@ -33,7 +45,10 @@ class DrinksController < ApplicationController
 
 	def show
 		get_drink
-		render :json => @drink
+		respond_to do |format|
+			format.html { render :show }
+			format.json { render :json => @drink }
+		end
 	end
 
   def update
