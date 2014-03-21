@@ -13,6 +13,7 @@ gem 'sendgrid'
 gem 'backbone-on-rails'
 gem 'faker'
 gem 'ejs'
+gem 'filepicker-rails'
 
 gem 'paperclip'
 gem 'aws-sdk'

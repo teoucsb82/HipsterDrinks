@@ -30,6 +30,9 @@
 [] modals
 [] flash errors
 
+## Bug fixes
+[] Nonregistered users should not be able to add drink. need redirect
+
 ## Known issues
 --ASK A TA HOW TO FIX THIS
 [] Drinks CRUD allows non-logged in users to create drinks. Need to prevent them from having access.

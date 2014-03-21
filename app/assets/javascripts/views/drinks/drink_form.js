@@ -36,11 +36,11 @@ HipsterDrinks.Views.DrinkForm = Backbone.View.extend({
     }
 
     if ( !$('#drink-name').hasClass("alert-danger") && !$('#drink-description').hasClass("alert-danger")) {
-      $('#drink-errors').removeClass("hidden")
-      $('#drink-errors').removeClass("alert-danger")
-      $('#drink-errors').addClass("alert-success")
-      $('#drink-error-strong').text("Success!")
-      $('#drink-error-text').text("Drink created!")
+      // $('#drink-errors').removeClass("hidden")
+      // $('#drink-errors').removeClass("alert-danger")
+      // $('#drink-errors').addClass("alert-success")
+      // $('#drink-error-strong').text("Success!")
+      // $('#drink-error-text').text("Drink created!")
     } else {
       $('#drink-errors').removeClass("hidden")
       $('#drink-errors').removeClass("alert-success")
