@@ -23,15 +23,11 @@ ActiveRecord::Schema.define(version: 20140321054324) do
   end
 
   create_table "drinks", force: true do |t|
-    t.string   "name",               null: false
-    t.text     "description",        null: false
+    t.string   "name",        null: false
+    t.text     "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"
@@ -45,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140321054324) do
   end
 
   create_table "ingredients", force: true do |t|
-    t.string   "name"
+    t.string   "name",            null: false
     t.integer  "measurement"
     t.string   "unit_of_measure"
     t.boolean  "alcohol"

@@ -27,14 +27,4 @@ class Drink < ActiveRecord::Base
  	has_many :favorites
 	has_many :favorite_users, :through => :favorites, :source => :user
 	
-	has_attached_file :photo, :styles => {
-        :big => "600x600>",
-        :medium => "300x300>",
-        :small => "150x150>",
-        :thumb => "50x50>"
-      }
-
-  def set_favorite
-  	self.favorite_users.create(id: current_user.id)
-  end
 end
