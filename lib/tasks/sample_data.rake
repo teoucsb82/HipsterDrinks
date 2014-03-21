@@ -46,7 +46,7 @@ namespace :db do
 
     User.find(rand(User.all.length) + 1).drinks.create!(
       name: "Sex on The Beach",
-      description: "Obvira")
+      description: "Obvi")
 
   end
 end
