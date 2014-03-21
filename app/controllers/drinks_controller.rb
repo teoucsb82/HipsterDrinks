@@ -8,6 +8,7 @@ class DrinksController < ApplicationController
 	def create
 		@drink = Drink.new(drink_params)
 		@drink.user_id = current_user.id
+		@drink.photo_file_name = "a.jpg"
 
 		if @drink.save
 			render :json => @drink
