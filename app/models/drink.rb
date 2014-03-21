@@ -23,4 +23,7 @@ class Drink < ActiveRecord::Base
  	has_many :favorites
 	has_many :favorite_users, :through => :favorites, :source => :user
 
+	has_many :drink_ingredients
+	has_many :ingredients, :through => :drink_ingredients, :source => :ingredient
+
 end

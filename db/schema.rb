@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321054324) do
+ActiveRecord::Schema.define(version: 20140321165707) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -41,13 +41,12 @@ ActiveRecord::Schema.define(version: 20140321054324) do
   end
 
   create_table "ingredients", force: true do |t|
-    t.string   "name",            null: false
-    t.integer  "measurement"
-    t.string   "unit_of_measure"
-    t.boolean  "alcohol"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ingredients", ["name"], name: "index_ingredients_on_name"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
