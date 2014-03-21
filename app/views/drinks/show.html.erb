@@ -7,5 +7,8 @@
 		Created by: <%= User.find(@drink.user_id).email %>
 	</p>
 
+	<p>photo</p>
+	<%= filepicker_image_tag @drink.filepicker_url, w: 160, h: 160, fit: 'clip' %>
+
 	<%= link_to "back", drinks_url %>
 </div>

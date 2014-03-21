@@ -48,7 +48,7 @@ class DrinksController < ApplicationController
 		get_drink
 		respond_to do |format|
 			format.html { render :show }
-			format.json { render :json => @drink }
+			# format.json { render :json => @drink }
 		end
 	end
 
@@ -69,7 +69,7 @@ class DrinksController < ApplicationController
 
 	private
 	def drink_params
-		params.require(:drink).permit(:name, :user_id, :description, :photo, :favorite)
+		params.require(:drink).permit(:name, :user_id, :description, :filepicker_url)
 	end
 
 	def get_drink

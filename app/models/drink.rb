@@ -15,7 +15,7 @@
 #
 
 class Drink < ActiveRecord::Base
-	attr_reader :photo
+	attr_reader :filepicker_url
 
 	validates :name, presence: true
 	validates :description, presence: true
@@ -24,9 +24,6 @@ class Drink < ActiveRecord::Base
 	belongs_to :user
  	has_many :comments, as: :commentable
 
-	has_attached_file :photo, 
-										:styles => { :medium => "300x300>", :thumb => "100x100>" }, 
-										:default_url => "/images/:style/missing.png"
 
 	def self.search(search)
 	  if search

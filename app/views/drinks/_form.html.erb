@@ -2,6 +2,7 @@
 <% method = (flag == :new) ? "POST" : "PATCH" %>
 <% message = (flag == :new) ? "Add Drink" : "Edit Drink" %>
 
+
 <form action="<%= action %>" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<input type="hidden" name="_method" value="<%= method %>">
@@ -18,3 +19,4 @@
 	
 	<input type="submit" value="<%= message %>">
 </form>
+

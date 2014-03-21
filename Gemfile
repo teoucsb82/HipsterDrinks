@@ -14,8 +14,8 @@ gem 'backbone-on-rails'
 gem 'turbolinks'
 gem 'faker'
 gem 'ejs'
-gem 'paperclip'
 gem 'aws-sdk'
+gem 'filepicker-rails'
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.

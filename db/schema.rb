@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321195552) do
+ActiveRecord::Schema.define(version: 20140321210621) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -23,15 +23,11 @@ ActiveRecord::Schema.define(version: 20140321195552) do
   end
 
   create_table "drinks", force: true do |t|
-    t.string   "name",               null: false
-    t.text     "description",        null: false
+    t.string   "name",           null: false
+    t.text     "description",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
     t.string   "filepicker_url"
   end
 
