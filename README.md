@@ -64,3 +64,4 @@ drinks
 TODO --
 
 Clean out paperflip/filepicker artifacts/garbage
+Clean up drink favoriting (ajax?). right now it's all page reloads
