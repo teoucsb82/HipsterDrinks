@@ -22,5 +22,7 @@ module HipsterDrinks
     # config.assets.paths << "app/assets/templates"
     config.filepicker_rails.api_key = ENV["FILEPICKER_API_KEY"]
     config.filepicker_rails.secret_key = ENV["FILEPICKER_API_SECRET_KEY"]
+
+    config.serve_static_assets = true
   end
 end
