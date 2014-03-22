@@ -1,0 +1,11 @@
+<h2>Drink Comments</h2>
+<ul>
+	<% @drink.comments.each do |comment| %>
+		<li>
+			<%= comment.body %> - <em><%= User.find(comment.author_id).email %></em>
+			<% if logged_in? && (current_user.id == comment.author_id || current_user == @user) %>
+				<%= link_to "Delete comment", comment_url(comment), :method => :delete, class: "btn btn-xs btn-danger" %>
+			<% end %>
+		</li>
+	<% end %>
+</ul>

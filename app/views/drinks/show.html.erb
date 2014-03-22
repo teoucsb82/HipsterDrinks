@@ -19,4 +19,10 @@
 	<%= link_to 'Edit', edit_drink_path(@drink) %> |
 	<%= link_to 'Back', drinks_path %>
 
+	<div>
+		<%= render "wall" %>
+		<hr>
+		<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink" %>
+	</div>
+
 </div>
