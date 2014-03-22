@@ -35,4 +35,5 @@ group :development do
 	gem 'annotate'
 	gem 'capybara'
 	gem 'letter_opener'
+	gem 'sprockets_better_errors'
 end

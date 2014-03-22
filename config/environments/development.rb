@@ -39,4 +39,6 @@ HipsterDrinks::Application.configure do
       :s3_host_name => 's3-us-west-2.amazonaws.com' # or whatever your region host name is
     }
   }
+
+  config.assets.raise_production_errors = true
 end
