@@ -8,16 +8,23 @@
 	<p>
 		Created by: <%= User.find(@drink.user_id).email %>
 	</p>
-
-	<p>photo</p>
+	<h2>ingredients</h2>
+	<ul>
+		<% @drink.ingredients.each do |ingredient| %>
+			<li><%= ingredient.name %></li>
+		<% end %>
+	</ul>
+	
 	<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
+		<p>photo</p>
 		<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 160, h: 160, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
 		<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png" %></tr>
 	<% end %>
 	<%= link_to "back", drinks_url %>
 
-	<%= link_to 'Edit', edit_drink_path(@drink) %> |
-	<%= link_to 'Back', drinks_path %>
+	<% if current_user.id == @drink.user_id %>
+		<%= link_to 'Edit', edit_drink_path(@drink) %>
+	<% end %>
 
 	<div>
 		<%= render "wall" %>
