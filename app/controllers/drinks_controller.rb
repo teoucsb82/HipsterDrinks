@@ -8,6 +8,8 @@ class DrinksController < ApplicationController
   # GET /drinks.json
   def index
     @drinks = Drink.search(params[:search])
+    @drinks.sort_by!(&:average)
+    @drinks.reverse!
     respond_to do |format|
       format.html { render :index }
       format.json { render :json => @drinks }
@@ -17,6 +19,8 @@ class DrinksController < ApplicationController
   # GET /drinks/1
   # GET /drinks/1.json
   def show
+    Drink.average(@drink)
+    render :show
   end
 
   # GET /drinks/new
@@ -50,6 +54,7 @@ class DrinksController < ApplicationController
   # PATCH/PUT /drinks/1
   # PATCH/PUT /drinks/1.json
   def update
+    Drink.average(@drink)
     respond_to do |format|
       if @drink.update(drink_params)
         flash[:success] = 'Drink was successfully updated.' 

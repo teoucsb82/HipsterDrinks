@@ -9,6 +9,8 @@
 #  created_at     :datetime
 #  updated_at     :datetime
 #  filepicker_url :string(255)
+#  average        :float            default(0.0)
+#
 
 class Drink < ActiveRecord::Base
 	validates :name, presence: true
@@ -31,6 +33,16 @@ class Drink < ActiveRecord::Base
 	  else
 	    find(:all)
 	  end
+	end
+
+	def self.average(drink)
+		return 0 if drink.comments.count == 0
+		t = 0
+		drink.comments.each do |comment|
+			t += comment.rating
+		end
+		drink.average = t.to_f / drink.comments.count
+		drink.save
 	end
 
 end

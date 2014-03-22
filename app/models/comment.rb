@@ -9,8 +9,10 @@
 #  commentable_type :string(255)
 #  created_at       :datetime
 #  updated_at       :datetime
+#  rating           :integer
 #
 
 class Comment < ActiveRecord::Base
 	belongs_to :commentable, polymorphic: true
+	validates :rating, :presence => true
 end

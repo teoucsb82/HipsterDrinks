@@ -1,5 +1,7 @@
 <div class="container">
 	<h1><%= @drink.name %></h1>
+	<h1>Average Rating: <%= @drink.average %></h1>
+	<h3><%= @drink.comments.count %> Votes </h3>
 	<%= render 'favorite_form' %>
 	<hr>
 	<p>

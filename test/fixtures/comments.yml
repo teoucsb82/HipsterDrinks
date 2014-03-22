@@ -9,6 +9,7 @@
 #  commentable_type :string(255)
 #  created_at       :datetime
 #  updated_at       :datetime
+#  rating           :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

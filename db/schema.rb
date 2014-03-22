@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322194935) do
+ActiveRecord::Schema.define(version: 20140322225549) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -20,22 +20,17 @@ ActiveRecord::Schema.define(version: 20140322194935) do
     t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "drink_recipes", force: true do |t|
-    t.integer  "drink_id"
-    t.integer  "ingredient_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer  "rating"
   end
 
   create_table "drinks", force: true do |t|
-    t.integer  "user_id",        null: false
-    t.string   "name",           null: false
+    t.integer  "user_id",                      null: false
+    t.string   "name",                         null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "filepicker_url"
+    t.float    "average",        default: 0.0
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"

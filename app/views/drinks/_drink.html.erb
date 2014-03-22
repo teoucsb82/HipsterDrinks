@@ -2,6 +2,7 @@
   <td><%= drink.user_id %></td>
   <td><%= drink.name %></td>
   <td><%= drink.description %></td>
+  <td><%= drink.average %></td>
   <td><%= link_to 'Show', drink %></td>
   <% if logged_in? && current_user.id == drink.user_id %>
     <td><%= link_to 'Edit', edit_drink_path(drink) %></td>

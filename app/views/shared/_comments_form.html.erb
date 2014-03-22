@@ -4,6 +4,15 @@
   <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
   <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
 
+  <span class="star-rating">
+    <input type="radio" name="comment[rating]" value="1"><i></i>
+    <input type="radio" name="comment[rating]" value="2"><i></i>
+    <input type="radio" name="comment[rating]" value="3"><i></i>
+    <input type="radio" name="comment[rating]" value="4"><i></i>
+    <input type="radio" name="comment[rating]" value="5"><i></i>
+  </span>
+  <strong class="choice">Choose a rating</strong>
+
   <div class="form-group">
     <label for="user-comment" class="col-sm-2 control-label">Message</label>
     <div class="col-sm-8">
