@@ -1,0 +1,10 @@
+<% @user ||= current_user %>
+<div class="favorite-stats">
+  <a href="<%= favorite_drinks_user_url(@user) %>">
+    <strong id="favoriting" class="favorite-stat">
+      <%= @user.favorite_drinks.count %>
+    </strong>
+    favorite drinks
+  </a>
+
+</div>

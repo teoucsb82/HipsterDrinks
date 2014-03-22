@@ -14,6 +14,15 @@
 			<section>
 				<%= render 'stats' %>
 			</section>
+
+			<section>
+				<%= render 'favorite_stats' %>
+				<ul>
+					<% @user.favorite_drinks.each do |favdrink| %>
+						<%= link_to favdrink.name, drink_url(favdrink) %>
+					<% end %>
+				</ul>
+			</section>
 		</aside>
 
 		<div class="col-xs-8">

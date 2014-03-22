@@ -30,8 +30,11 @@ class User < ActiveRecord::Base
            :class_name => "Relationship",
 					 :dependent => :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
- 	has_many :comments, as: :commentable
 
+ 	has_many :comments, as: :commentable
+ 	
+ 	has_many :favorites, :foreign_key => "favoritor_id", dependent: :destroy
+ 	has_many :favorite_drinks, through: :favorites, source: :favorited
 
 	def self.search(search)
 	  if search
@@ -51,6 +54,18 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def favorite?(drink)
+    favorites.find_by(favorited_id: drink.id)
+  end
+
+  def favorite!(drink)
+    favorites.create!(favorited_id: drink.id)
+  end
+
+  def unfavorite!(drink)
+    favorites.find_by(favorited_id: drink.id).destroy
   end
 
 	def self.find_by_credentials(email, password)

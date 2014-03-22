@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321214807) do
+ActiveRecord::Schema.define(version: 20140321234248) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20140321214807) do
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"
+
+  create_table "favorites", force: true do |t|
+    t.integer  "favoritor_id"
+    t.integer  "favorited_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["favorited_id"], name: "index_favorites_on_favorited_id"
+  add_index "favorites", ["favoritor_id", "favorited_id"], name: "index_favorites_on_favoritor_id_and_favorited_id", unique: true
+  add_index "favorites", ["favoritor_id"], name: "index_favorites_on_favoritor_id"
 
   create_table "ingredients", force: true do |t|
     t.string   "name",       null: false

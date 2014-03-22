@@ -68,6 +68,13 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def favorite_drinks
+    @title = "Favorite Drinks"
+    @user = User.find(params[:id])
+    @drinks = @user.favorite_drinks#.paginate(page: params[:page])
+    render 'show_favorites'
+  end
+
 	private
 	def user_params
 		params.require(:user).permit(:email, :password, :session_token, :first_name, :last_name, :about)
