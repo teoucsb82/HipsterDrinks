@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321234248) do
+ActiveRecord::Schema.define(version: 20140322194935) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
     t.integer  "author_id",        null: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "drink_recipes", force: true do |t|
+    t.integer  "drink_id"
+    t.integer  "ingredient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +58,16 @@ ActiveRecord::Schema.define(version: 20140321234248) do
   end
 
   add_index "ingredients", ["name"], name: "index_ingredients_on_name"
+
+  create_table "recipes", force: true do |t|
+    t.integer  "drink_id"
+    t.integer  "ingredient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recipes", ["drink_id"], name: "index_recipes_on_drink_id"
+  add_index "recipes", ["ingredient_id"], name: "index_recipes_on_ingredient_id"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

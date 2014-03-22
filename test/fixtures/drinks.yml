@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: drinks
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer          not null
+#  name           :string(255)      not null
+#  description    :text
+#  created_at     :datetime
+#  updated_at     :datetime
+#  filepicker_url :string(255)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
