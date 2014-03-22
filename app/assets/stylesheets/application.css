@@ -19,13 +19,3 @@ src: url('<%= asset_path('glyphicons-regular.eot?#iefix')%>') format('embedded-o
 font-weight: normal;
 font-style: normal;
 }
-
-[class^="glyphicons-"]:before {
-display: inline-block;
-font-family: 'Glyphicons';
-font-style: normal;
-font-weight: normal;
-text-decoration: inherit;
-*display: inline;
-*zoom: 1;
-}
