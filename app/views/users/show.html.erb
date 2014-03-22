@@ -7,7 +7,6 @@
 				  <%= gravatar_for @user %>
 				  <%= @user.email %>
 				  <br>
-				  
 		      <%= render 'follow_form' if logged_in? %>
 				</h1>
 			</section>
@@ -19,15 +18,22 @@
 				<%= render 'favorite_stats' %>
 				<ul>
 					<% @user.favorite_drinks.each do |favdrink| %>
-						<%= link_to favdrink.name, drink_url(favdrink) %>
+						<li>
+							<%= link_to favdrink.name, drink_url(favdrink) %>
+						</li>
 					<% end %>
 				</ul>
 			</section>
 		</aside>
 
 		<div class="col-xs-8">
+
 			<div id="favorite-drinks">
-				<%= render "favoritedrinks" %>
+				<%#= render "favorite_drinks" %>
+			</div>
+
+			<div id="submitted-drinks">
+				<%= render "submitted_drinks" %>
 			</div>
 
 			<div>
