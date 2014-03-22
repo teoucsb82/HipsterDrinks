@@ -2,16 +2,8 @@ class FavoritesController < ApplicationController
   # before_action :signed_in_user
 
   def create  
-    50.times { puts "" }
     @drink = Drink.find(params[:favorite][:favorited_id])
-    puts "@drink = #{@drink}"
-    puts "params = #{params}"
-
-
     current_user.favorite!(@drink)
-    puts "current_user = #{current_user}"
-
-
     flash[:success] = "#{@drink.name} added to favorites!"
     respond_to do |format|
       format.html { redirect_to @drink }
