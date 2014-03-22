@@ -19,7 +19,7 @@ gem 'simple_form'
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.
-  # gem 'rails_12factor'
+  gem 'rails_12factor'
   gem 'pg'
 end
 
