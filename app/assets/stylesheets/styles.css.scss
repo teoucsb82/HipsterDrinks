@@ -65,7 +65,8 @@ html {
 }
 
 body {
-  margin-top: 1%;
+  margin-top: 0.5%;
+
 }
 
 section {
@@ -171,3 +172,7 @@ li.drink {
   display: none;
 }
 
+.navbar {
+    background: transparent;
+    border: none;
+}
