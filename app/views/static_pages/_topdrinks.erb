@@ -1,13 +1,17 @@
-<ul class="thumbnails" id="hover-cap-4col">
+<ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0;" >
 	<% @top_drinks.each do |drink| %>
-		<li class="col-xs-3" style="list-style:none">
+		<li class="col-xs-3" style="list-style:none; margin-left:0px;">
 		  <div class="thumbnail">
 		    <div class="caption">
-		        <h4><%= drink.name %></h4>
-		        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+		        <h3><%= drink.name %></h3>
+		        <p><%= drink.description %></p>
+		        <p><strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="auto">
+		        	<% drink.average.round.times do %>
+								<span class="glyphicon glyphicon-star" style="color: yellow"></span>
+							<% end %>
+						</strong></p>
 		        <p>
-		        	<a href="#" class="btn" rel="tooltip" title="Favorite"><span class="glyphicon glyphicon-heart"></span></a> 
-		        	<a href="#" rel="tooltip" title="View Drink" class="btn btn-inverse"><span class="glyphicon glyphicon-eye-open"></span></a>
+		        	<a href="<%= drink_url(drink)%>" class="" rel="tooltip" title="Favorite">VIEW DRINK<span class="glyphicon glyphicon-heart"></span></a>
 		        </p>
 		    </div>
 		    <img src="http://placehold.it/600x400" alt="ALT NAME">

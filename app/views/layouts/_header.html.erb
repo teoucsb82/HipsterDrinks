@@ -12,9 +12,22 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
+    <form class="navbar-form navbar-left" action="<%= drinks_url %>" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Find a cocktail" id="search" name="search">
+      </div>
+      <button type="submit" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+
     <div class="nav navbar-nav">
       <ul class="nav navbar-nav">
-        <li><%= link_to "All Drinks", drinks_url %></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Drinks<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "All Drinks", drinks_url %></li>
+            </ul>
+          </li>
+        
         <% if logged_in? %>
           <li><button class="btn btn-primary header-button" data-toggle="modal" data-target="#addDrinkModal"><span class="glyphicon glyphicon-plus"></span> Create A Cocktail</button></li>
         <% end %>
@@ -22,17 +35,6 @@
       </ul>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        
-      </ul>
-
-      <form class="navbar-form navbar-left" action="<%= drinks_url %>" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Find a cocktail" id="search" name="search">
-        </div>
-        <button type="submit" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
-
       <ul class="nav navbar-nav navbar-right">
 
         <% if logged_in? %>
