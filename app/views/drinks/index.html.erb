@@ -1,5 +1,13 @@
 <h1>Listing drinks</h1>
 
+<%= form_tag drinks_url, :method => 'get', :id => "drinks_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="drinks"><%= render 'drinks' %></div>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -19,3 +27,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= will_paginate @drinks %>

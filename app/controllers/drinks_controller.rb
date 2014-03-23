@@ -7,7 +7,8 @@ class DrinksController < ApplicationController
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Drink.order(sort_column + " " + sort_direction)
+    @drinks = Drink.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    # .order(sort_column + " " + sort_direction)
 
     # @drinks = @drinks.search(params[:search])
     # @drinks.sort_by!(&:average)
