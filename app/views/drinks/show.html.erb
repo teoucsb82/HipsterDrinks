@@ -43,6 +43,6 @@
 
 	<%= link_to "back", drinks_url %>
 
-	<% if current_user.id == @drink.user_id %>
+	<% if logged_in? && current_user.id == @drink.user_id %>
 		<%= link_to 'Edit', edit_drink_path(@drink) %>
 	<% end %>
