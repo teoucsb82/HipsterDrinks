@@ -4,7 +4,10 @@ namespace :db do
     User.create!(
                  email: "foobar",
                  password: "foobar")
-    40.times do |n|
+    User.create!(
+                 email: "guest",
+                 password: "password")
+    10.times do |n|
       email = "example-#{n+1}@hipsterdrinks.com"
       password  = "password"
       User.create!(
