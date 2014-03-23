@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 					 :dependent => :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
- 	has_many :comments, as: :commentable
+ 	has_many :comments, as: :commentable, dependent: :destroy
  	
  	has_many :favorites, :foreign_key => "favoritor_id", dependent: :destroy
  	has_many :favorite_drinks, through: :favorites, source: :favorited

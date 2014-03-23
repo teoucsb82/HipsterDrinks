@@ -16,7 +16,6 @@ gem 'ejs'
 gem 'aws-sdk'
 gem 'filepicker-rails'
 gem 'simple_form'
-gem 'rails3-jquery-autocomplete'
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.
