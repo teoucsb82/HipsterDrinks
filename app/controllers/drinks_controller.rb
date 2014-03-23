@@ -2,14 +2,16 @@ class DrinksController < ApplicationController
   before_filter :authenticate_user, :except => [:index, :show]
   before_filter :authenticate_author, :only => [:edit, :update, :destroy]
   before_action :set_drink, only: [:show, :edit, :update, :destroy]
-  
+  helper_method :sort_column, :sort_direction
 
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Drink.search(params[:search])
-    @drinks.sort_by!(&:average)
-    @drinks.reverse!
+    @drinks = Drink.order(sort_column + " " + sort_direction)
+
+    # @drinks = @drinks.search(params[:search])
+    # @drinks.sort_by!(&:average)
+    # @drinks.reverse!
     respond_to do |format|
       format.html { render :index }
       format.json { render :json => @drinks }
@@ -99,5 +101,13 @@ class DrinksController < ApplicationController
         flash[:danger] = ["You cannot modify someone else's drink"]
         redirect_to drinks_url
       end
+    end
+
+    def sort_column
+      Drink.column_names.include?(params[:sort]) ? params[:sort] : "average"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 end
