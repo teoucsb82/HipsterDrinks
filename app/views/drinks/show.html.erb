@@ -23,9 +23,12 @@
 		<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png" %></tr>
 	<% end %>
 
-	<div>
+	<div style="border: 2px dashed black">
 		<!-- review input -->
-		<% if logged_in? && current_user.vote_count(@drink) < 1 %>
+		<h1>Reviews</h1>
+		<% if logged_in? && current_user.id == @drink.user_id %>
+			Sorry, no reviewing your own drink!
+		<% elsif logged_in? && current_user.vote_count(@drink) < 1 %>
 			<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink", :flag => :new %>
 		<% elsif logged_in? && current_user.vote_count(@drink) >= 1 %>
 			<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink" %>

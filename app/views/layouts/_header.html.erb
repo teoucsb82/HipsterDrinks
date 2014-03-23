@@ -8,7 +8,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to image_tag("https://s3-us-west-1.amazonaws.com/hipsterdrinks/HD_logo.png", size: "75x50",), root_url%>
+      
+      <%= link_to "HipsterDrinks", root_url, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,10 +22,12 @@
 
     <div class="nav navbar-nav">
       <ul class="nav navbar-nav">
+        
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse Drinks<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><%= link_to "All Drinks", drinks_url %></li>
+
             </ul>
           </li>
         
