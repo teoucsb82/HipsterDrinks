@@ -20,6 +20,7 @@ class DrinksController < ApplicationController
   # GET /drinks/1.json
   def show
     Drink.average(@drink)
+    puts "this ran"
     render :show
   end
 
@@ -54,7 +55,6 @@ class DrinksController < ApplicationController
   # PATCH/PUT /drinks/1
   # PATCH/PUT /drinks/1.json
   def update
-    Drink.average(@drink)
     respond_to do |format|
       if @drink.update(drink_params)
         flash[:success] = 'Drink was successfully updated.' 
@@ -82,6 +82,10 @@ class DrinksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_drink
       @drink = Drink.find(params[:id])
+    end
+
+    def set_average
+      Drink.average(@drink)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

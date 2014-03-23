@@ -11,7 +11,7 @@ HipsterDrinks::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   
-	resources :comments, :only => [:create, :destroy]
+	resources :comments, :only => [:create, :destroy, :edit, :update]
 	resource :session, :only => [:new, :create, :destroy]
 
 end

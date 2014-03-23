@@ -92,6 +92,10 @@ class User < ActiveRecord::Base
 		BCrypt::Password.new(self.password_digest).is_password?(password)
 	end
 
+	def vote_count(drink)
+		drink.comments.where(author_id: self.id).count
+	end
+
 	private
 	def ensure_session_token
 		self.session_token ||= self.class.generate_session_token

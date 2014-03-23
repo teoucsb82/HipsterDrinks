@@ -4,7 +4,7 @@
 	<h3><%= @drink.comments.count %> Votes </h3>
 	<%= render 'favorite_form' %>
 	<hr>
-	<p>
+	<p><h2>description</h2>
 		<%= @drink.description %>
 	</p>
 	<p>
@@ -22,16 +22,27 @@
 		<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 160, h: 160, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
 		<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png" %></tr>
 	<% end %>
+
+	<div>
+		<!-- review input -->
+		<% if logged_in? && current_user.vote_count(@drink) < 1 %>
+			<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink", :flag => :new %>
+		<% elsif logged_in? && current_user.vote_count(@drink) >= 1 %>
+			<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink" %>
+		<% else %>
+			<!-- show gray'ed out form here instead -->
+			You must be logged in to post a review
+		<% end %>
+
+
+		<!-- review section -->
+		<%= render "wall" %>
+	</div>
+
+</div>
+
 	<%= link_to "back", drinks_url %>
 
 	<% if current_user.id == @drink.user_id %>
 		<%= link_to 'Edit', edit_drink_path(@drink) %>
 	<% end %>
-
-	<div>
-		<%= render "wall" %>
-		<hr>
-		<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink" %>
-	</div>
-
-</div>

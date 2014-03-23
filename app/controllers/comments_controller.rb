@@ -11,6 +11,22 @@ class CommentsController < ApplicationController
     end
     redirect_to :back
   end
+
+  def edit
+    @comment = Comment.find(params[:id])
+    render "shared/_comments_form"
+  end
+
+  def update
+    get_comment
+    if @comment.update(comment_params)
+      flash[:success] = 'Comment was successfully updated.' 
+      redirect_to :back
+    else
+      format.html { render :edit }
+      format.json { render json: @comment.errors, status: :unprocessable_entity }
+    end
+  end
   
   def destroy
     get_comment

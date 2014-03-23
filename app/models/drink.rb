@@ -36,12 +36,16 @@ class Drink < ActiveRecord::Base
 	end
 
 	def self.average(drink)
-		return 0 if drink.comments.count == 0
+		if drink.comments.count == 0
+			drink.average = 0
+			drink.save
+			return
+		end
 		t = 0
 		drink.comments.each do |comment|
 			t += comment.rating
 		end
-		drink.average = t.to_f / drink.comments.count
+		drink.average = (t.to_f / drink.comments.count).round(2)
 		drink.save
 	end
 
