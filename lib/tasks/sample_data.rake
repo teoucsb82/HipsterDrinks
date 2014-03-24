@@ -117,9 +117,9 @@ namespace :db do
         else
           review = ["Best drink ever!", "Totally righteous!", "Super awesome amazeballs!", "Tyrion himself would approve"].sample
         end
-        Drink.find(drink+1).comments.create(author_id: x + 1, rating: r, body: review)
+        Drink.find(drink+1).comments.create(author_id: x + 2, rating: r, body: review)
       end
-      Drink.average(drink)
+      # Drink.average(drink)
     end
 
   end
