@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324205839) do
+ActiveRecord::Schema.define(version: 20140324232722) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20140324205839) do
     t.datetime "updated_at"
     t.integer  "rating"
   end
+
+  create_table "drink_ingredients", force: true do |t|
+    t.integer  "drink_id"
+    t.integer  "ingredient_id"
+    t.float    "measurement_amount"
+    t.string   "measurement_unit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "drink_ingredients", ["drink_id"], name: "index_drink_ingredients_on_drink_id"
+  add_index "drink_ingredients", ["ingredient_id"], name: "index_drink_ingredients_on_ingredient_id"
 
   create_table "drinks", force: true do |t|
     t.integer  "user_id",                      null: false
@@ -72,7 +84,8 @@ ActiveRecord::Schema.define(version: 20140324205839) do
     t.integer  "ingredient_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "amount"
+    t.integer  "amount"
+    t.string   "measure"
   end
 
   add_index "recipes", ["drink_id"], name: "index_recipes_on_drink_id"
@@ -88,17 +101,6 @@ ActiveRecord::Schema.define(version: 20140324205839) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
-
-  create_table "tasks", force: true do |t|
-    t.string   "name"
-    t.integer  "measurement"
-    t.string   "unit_of_measure"
-    t.integer  "drink_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tasks", ["drink_id"], name: "index_tasks_on_drink_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                              null: false
