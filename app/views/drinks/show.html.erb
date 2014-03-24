@@ -1,5 +1,6 @@
+
 <div class="container" style="border: 3px solid #dd4814">
-	<h1><%= @drink.name %></h1>
+	<h1><%= @drink.name %> <%= render 'shared/facebook' %></h1>
 	<h1>Average Rating: 
 			<% @drink.average.floor.times do %>
 				<i class="fa fa-star" style="color: #dd4814"></i>
@@ -61,3 +62,4 @@
 	<% if logged_in? && current_user.id == @drink.user_id %>
 		<%= link_to 'Edit', edit_drink_path(@drink) %>
 	<% end %>
+
