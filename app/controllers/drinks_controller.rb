@@ -23,7 +23,6 @@ class DrinksController < ApplicationController
   # GET /drinks/1.json
   def show
     Drink.average(@drink)
-    puts "this ran"
     render :show
   end
 
