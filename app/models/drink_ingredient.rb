@@ -1,6 +1,17 @@
+# == Schema Information
+#
+# Table name: drink_ingredients
+#
+#  id                 :integer          not null, primary key
+#  drink_id           :integer
+#  ingredient_id      :integer
+#  measurement_amount :float
+#  measurement_unit   :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 class DrinkIngredient < ActiveRecord::Base
-	validates :measurement_amount, presence: true
-	validates :measurement_unit, presence: true
 	belongs_to :drink
 	belongs_to :ingredient
 end
