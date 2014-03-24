@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324203130) do
+ActiveRecord::Schema.define(version: 20140324205839) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140324203130) do
     t.integer  "ingredient_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "amount"
   end
 
   add_index "recipes", ["drink_id"], name: "index_recipes_on_drink_id"
