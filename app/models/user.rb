@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
  	has_many :favorites, :foreign_key => "favoritor_id", dependent: :destroy
  	has_many :favorite_drinks, through: :favorites, source: :favorited
 
+
 	def self.search(search)
 	  if search
 	    find(:all, :conditions => ['email LIKE ?', "%#{search}%"])
