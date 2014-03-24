@@ -3,7 +3,7 @@
 	<% @drink.comments.each do |comment| %>
 		<li>
 			<% comment.rating.times do %>
-				<span class="glyphicon glyphicon-star"></span>
+				<i class="fa fa-star" style="color: #dd4814"></i>
 			<% end %>
 			<%= comment.body %> - <em><%= User.find(comment.author_id).email %></em>
 			<% if logged_in? && (current_user.id == comment.author_id || current_user == @user) %>
