@@ -1,11 +1,14 @@
 <!-- THIS IS NOT DRY. Identical version lives in _modal.html.erb partial -->
 
-<%= simple_form_for(@drink) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@drink) do |f| %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    
 
     <%= f.label :filepicker_url, "Upload Pic:" %>
     <%= f.filepicker_field :filepicker_url, dragdrop: true  %>

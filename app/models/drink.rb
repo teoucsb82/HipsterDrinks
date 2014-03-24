@@ -16,6 +16,9 @@ class Drink < ActiveRecord::Base
 	validates :name, presence: true
 	validates :description, presence: true
 	validates :user_id, presence: true
+	
+	extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
 
 	belongs_to :user
  	has_many :comments, as: :commentable
@@ -26,12 +29,10 @@ class Drink < ActiveRecord::Base
 	has_many :recipes
 	has_many :ingredients, through: :recipes, source: :ingredient
 	
-	extend FriendlyId
-  friendly_id :name, use: [:slugged, :finders]
 
 	def self.search(search)
 	  if search
-	    where('name LIKE ?', "%#{search}%")
+	    where('name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%")
 	  else
 	    scoped
 	  end
