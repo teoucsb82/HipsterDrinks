@@ -5988,6 +5988,11 @@ li.drink {
   text-decoration: none;
 }
 
+.drink-header {
+  font-variant: small-caps;
+  border-bottom: 1px solid $textColor;
+}
+
 .asc {
   width: 0; 
   height: 0; 
