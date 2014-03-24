@@ -4,7 +4,7 @@
 		  <div class="thumbnail">
 		    <div class="caption">
 		        <h3><%= link_to drink.name, drink_url(drink) %></h3>
-		        <p><%= drink.description.split(" ").shift(20).join(" ") %></p>
+		        <p><%= drink.description.split(".").shift(1).join(".") + "." %></p>
 		        <p><strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="auto">
 		        	<% drink.average.floor.times do %>
 								<i class="fa fa-star" style="color: #dd4814"></i>

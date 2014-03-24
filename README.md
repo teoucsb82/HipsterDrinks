@@ -66,6 +66,7 @@ TODO --
 Clean out paperflip/filepicker artifacts/garbage
 Clean up drink favoriting (ajax?). right now it's all page reloads
 Add a "drinks you might like" section -- based off people you follow, do 
+*** Add "build a bar" section to USERS. 
 
 current_user.followed_users.each do |user| 
 	user.favorite_drinks.each do |drink|
