@@ -5973,15 +5973,14 @@ li.drink {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.7);
     width: 100%;
     height: 100%;
     color: $textColor !important;
 }
-.pretty th .current {
-  padding-right: 12px;
-  background-repeat: no-repeat;
-  background-position: right center;
+
+.caption a {
+  text-decoration: none;
 }
 
 .asc {
