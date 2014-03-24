@@ -103,7 +103,7 @@ namespace :db do
       description: "This has enjoyed many incarnations over the years but the original recipe was a very basic mix. This one comes from Jerry Tomas’ 1887 Bartenders Guide, in which he uses the anisette liqueur instead of sugar to sweeten the drink. The Glass: Absinthe The Ingredients: 1fl oz absinthe 2 dashes anisette dash Angostura bitters 2 fl oz water ice cubes The Instructions: Shake all the ingredients with ice and strain into a glass. - See more at: http://www.mensfitness.com/life/20-cocktail-recipes/slide/19#sthash.sbQRHeke.dpuf",
       filepicker_url: "https://www.filepicker.io/api/file/wZLIZUsQLW8lgfUoMTpO")
 
-    20.times do |drink|
+    Drink.all.count.times do |drink|
       5.times do |x|
         r = rand(5) + 1
         if r == 1
