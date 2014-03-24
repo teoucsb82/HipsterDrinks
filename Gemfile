@@ -17,6 +17,8 @@ gem 'aws-sdk'
 gem 'filepicker-rails'
 gem 'simple_form'
 gem 'will_paginate'
+gem 'friendly_id'
+
 
 group :production do
   # bundle exec rake doc:rails generates the API under doc/api.
