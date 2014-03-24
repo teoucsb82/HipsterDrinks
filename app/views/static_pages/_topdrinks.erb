@@ -3,23 +3,24 @@
 		<li class="col-xs-3" style="list-style:none; margin-left:0px">
 		  <div class="thumbnail">
 		    <div class="caption">
-		        <h3><%= link_to drink.name, drink_url(drink) %></h3>
-		        <p><%= drink.description.split(".").shift(1).join(".") + "." %></p>
-		        <p><strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="auto">
-		        	<% drink.average.floor.times do %>
-								<i class="fa fa-star" style="color: #dd4814"></i>
-							<% end %>
-							<% remainder = drink.average %>
+	        <h3><%= link_to drink.name, drink_url(drink) %></h3>
+	        <p><%= link_to (drink.description.split(".").shift(1).join(".") + "."), drink_url(drink) %></p>
+	        <p><strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="right">
+	        	<% drink.average.floor.times do %>
+							<i class="fa fa-star main-color"></i>
+						<% end %>
+						<% remainder = drink.average %>
 
-							<% while remainder >= 1 %>
-								<% remainder -= 1 %>
-							<% end %>
-							<% if remainder >= 0.5 %>
-								<i class="fa fa-star-half" style="color: #dd4814"></i>
-							<% end %>
-						</strong></p>
+						<% while remainder >= 1 %>
+							<% remainder -= 1 %>
+						<% end %>
+						<% if remainder >= 0.5 %>
+							<i class="fa fa-star-half main-color"></i>
+						<% end %>
+					</strong></p>
 		    </div>
 		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 300 %>
+		    <h4 align="center" class="main-color"><%= drink.name %></h4>
 		  </div>
 		</li>
 	<% end %>

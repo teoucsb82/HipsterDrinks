@@ -5983,6 +5983,11 @@ li.drink {
   text-decoration: none;
 }
 
+.caption p a {
+  color: $textColor;
+  text-decoration: none;
+}
+
 .asc {
   width: 0; 
   height: 0; 
@@ -6003,3 +6008,6 @@ li.drink {
   border-right: 4px solid $mainColor;
 }
 
+.main-color {
+  color: $mainColor;
+}

@@ -25,9 +25,6 @@ class Drink < ActiveRecord::Base
 
  	has_many :favorites, :foreign_key => "favorited_id", dependent: :destroy
 	has_many :favorite_users, through: :favorites, source: :favoritor
-
-	has_many :recipes
-	has_many :ingredients, through: :recipes, source: :ingredient
 	
 
 	def self.search(search)

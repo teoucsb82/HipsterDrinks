@@ -3,7 +3,7 @@
 	<h1><%= @drink.name %> <%= render 'shared/facebook' %></h1>
 	<h1>Average Rating:
 			<% @drink.average.floor.times do %>
-				<i class="fa fa-star" style="color: #dd4814"></i>
+				<i class="fa fa-star main-color"></i>
 			<% end %>
 			<% remainder = @drink.average %>
 			
@@ -11,14 +11,14 @@
 				<% remainder -= 1 %>
 			<% end %>
 			<% if remainder >= 0.5 %>
-				<i class="fa fa-star-half-empty" style="color: #dd4814"></i>
+				<i class="fa fa-star-half-empty main-color"></i>
 			<% end %>
 			
 			<% (5 - @drink.average.ceil).times do %>
-				<i class="fa fa-star-o" style="color: #dd4814"></i>
+				<i class="fa fa-star-o main-color"></i>
 			<% end %>
 			<% if remainder < 0.5  && remainder > 0 %>
-				<i class="fa fa-star-o" style="color: #dd4814"></i>
+				<i class="fa fa-star-o main-color"></i>
 			<% end %>
 			<small><%= @drink.average %></small>
 	</h1>
@@ -31,12 +31,13 @@
 	<p>
 		Created by: <%= User.find(@drink.user_id).email %>
 	</p>
-	<h2>ingredients</h2>
+
+<!-- 	<h2>ingredients</h2>
 	<ul>
-		<% @drink.ingredients.each do |ingredient| %>
-			<li><%= ingredient.name %></li>
-		<% end %>
-	</ul>
+		<%# @drink.ingredients.each do |ingredient| %>
+			<li><%#= ingredient.name %></li>
+		<%# end %>
+	</ul> -->
 	
 	<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
 		<p>photo</p>
