@@ -47,7 +47,7 @@ class Drink < ActiveRecord::Base
 		drink.comments.each do |comment|
 			t += comment.rating
 		end
-		drink.average = (t.to_f / drink.comments.count).round(2)
+		drink.average = (t.to_f / drink.comments.count).round(1)
 		drink.save
 	end
 

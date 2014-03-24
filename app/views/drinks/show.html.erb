@@ -1,18 +1,26 @@
 
 <div class="container" style="border: 3px solid #dd4814">
 	<h1><%= @drink.name %> <%= render 'shared/facebook' %></h1>
-	<h1>Average Rating: 
+	<h1>Average Rating:
 			<% @drink.average.floor.times do %>
 				<i class="fa fa-star" style="color: #dd4814"></i>
 			<% end %>
 			<% remainder = @drink.average %>
-
+			
 			<% while remainder >= 1 %>
 				<% remainder -= 1 %>
 			<% end %>
 			<% if remainder >= 0.5 %>
-				<i class="fa fa-star-half" style="color: #dd4814"></i>
+				<i class="fa fa-star-half-empty" style="color: #dd4814"></i>
 			<% end %>
+			
+			<% (5 - @drink.average.ceil).times do %>
+				<i class="fa fa-star-o" style="color: #dd4814"></i>
+			<% end %>
+			<% if remainder < 0.5  && remainder > 0 %>
+				<i class="fa fa-star-o" style="color: #dd4814"></i>
+			<% end %>
+			<small><%= @drink.average %></small>
 	</h1>
 	<h3><%= @drink.comments.count %> Votes </h3>
 	<%= render 'favorite_form' %>
