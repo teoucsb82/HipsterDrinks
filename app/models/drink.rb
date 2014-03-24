@@ -27,7 +27,7 @@ class Drink < ActiveRecord::Base
 	has_many :ingredients, through: :recipes, source: :ingredient
 	
 	extend FriendlyId
-  friendly_id :name, :use => :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
 	def self.search(search)
 	  if search
