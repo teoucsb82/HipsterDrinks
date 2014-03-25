@@ -1,0 +1,12 @@
+<form class="navbar-form navbar-left" action="<%= drinks_url %>" role="search">
+  <input type="text" name="search" id="search_box" 
+    placeholder="Find a cocktail!">
+    <script>
+      var temp = $("#drink-list")[0].attributes.special.value;
+      $('#search_box').typeahead({
+        name: 'people',
+        local: JSON.parse(temp)
+      });
+    </script>
+  <button type="submit" class="btn btn-sm" value="Search"><i class="fa fa-search"></i></button>
+</form>
