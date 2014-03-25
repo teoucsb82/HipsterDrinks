@@ -7,12 +7,9 @@ class DrinksController < ApplicationController
   # GET /drinks
   # GET /drinks.json
   def index
-    @drinks = Drink.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
-    # .order(sort_column + " " + sort_direction)
-
-    # @drinks = @drinks.search(params[:search])
-    # @drinks.sort_by!(&:average)
-    # @drinks.reverse!
+    @drinks = Drink.search(params[:search])
+              .order(sort_column + " " + sort_direction)
+              .paginate(:per_page => 10, :page => params[:page])
     if @drinks.count == 1
       redirect_to drink_url(@drinks.first)
       return
@@ -96,12 +93,9 @@ class DrinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drink_params
-      params.require(:drink).permit!#(:name, :description, :filepicker_url,
-        # :drink_ingredients_attributes => {})
-      # (:name, :description, 
-      #                       :filepicker_url, :drink_ingredients_attributes,
-      #                       drink_ingredients_attributes: [])
-      # params[:drink][:drink_ingredients_attributes].values.first[:ingredient_attributes]
+      params.require(:drink).permit(:name, :description, :filepicker_url,
+               :drink_ingredients_attributes => [ :measurement_amount, :measurement_unit, :_destroy,
+                                                  :ingredient_attributes => [ :name ] ])
     end
 
     def authenticate_author
