@@ -3,7 +3,7 @@
 ## TODO
 
 ### Main Page
-[] Below carousel need pictures of top X drinks
+[X] Below carousel need pictures of top X drinks
 [X] Flash Errors
 
 ### User Page
@@ -73,3 +73,6 @@ current_user.followed_users.each do |user|
 		return drink.name
 	end
 end
+
+
+310-399-3553. denise

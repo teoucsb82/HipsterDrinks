@@ -10,6 +10,7 @@ class DrinksController < ApplicationController
     @drinks = Drink.search(params[:search])
               .order(sort_column + " " + sort_direction)
               .paginate(:per_page => 10, :page => params[:page])
+
     if @drinks.count == 1
       redirect_to drink_url(@drinks.first)
       return
@@ -42,13 +43,23 @@ class DrinksController < ApplicationController
   def create
     @drink = Drink.new(drink_params)
     @drink.user_id = current_user.id
-    # fail
+
     respond_to do |format|
       if @drink.save
+
+        # need this to bootstrap ingredient names and make them searchable
+        @drink.drink_ingredients.each do |di|
+           unless di.ingredient_id.nil?
+            @drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+          end
+        end
+        @drink.save
+
         flash[:success] = 'Drink was successfully created.' 
         format.html { redirect_to @drink}
         format.json { render action: 'show', status: :created, location: @drink }
       else
+        flash.now[:danger] = @drink.errors.full_messages
         format.html { render action: 'new' }
         format.json { render json: @drink.errors, status: :unprocessable_entity }
       end
@@ -93,7 +104,7 @@ class DrinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drink_params
-      params.require(:drink).permit(:name, :description, :filepicker_url,
+      params.require(:drink).permit(:name, :description, :filepicker_url, :logline,
                :drink_ingredients_attributes => [ :measurement_amount, :measurement_unit, :_destroy,
                                                   :ingredient_attributes => [ :name ] ])
     end

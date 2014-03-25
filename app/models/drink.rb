@@ -37,7 +37,8 @@ class Drink < ActiveRecord::Base
 
 	def self.search(search)
 	  if search
-	    where('name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%")
+	    where('name LIKE ? OR description LIKE ? OR logline LIKE ? OR hidden_fields LIKE ?', 
+	    			"%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
 	  else
 	    scoped
 	  end

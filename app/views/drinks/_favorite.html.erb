@@ -1,5 +1,5 @@
 <%= form_for(@drink.favorites.build(favoritor_id: current_user.id, favorited_id: @drink.id)) do |f| %>
   <div><%= f.hidden_field :favoritor_id %></div>
   <div><%= f.hidden_field :favorited_id %></div>
-  <%= f.submit "Favorite", class: "btn btn-large btn-primary" %>
+  <%= f.submit "+ Add To Favorites", class: "btn btn-large btn-primary" %>
 <% end %>

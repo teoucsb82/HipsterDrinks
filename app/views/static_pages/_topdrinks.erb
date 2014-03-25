@@ -4,7 +4,7 @@
 		  <div class="thumbnail">
 		    <div class="caption">
 	        <h3><%= link_to drink.name, drink_url(drink) %></h3>
-	        <p><%= link_to (drink.description.split(".").shift(1).join(".") + "."), drink_url(drink) %></p>
+	        <p><%= link_to drink.logline, drink_url(drink) %></p>
 	        <p><strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="right">
 	        	<% drink.average.floor.times do %>
 							<i class="fa fa-star main-color"></i>
@@ -20,7 +20,7 @@
 					</strong></p>
 		    </div>
 		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
-		    <h4 align="center" class="main-color drink-header"><%= drink.name %></h4>
+		    <h4 align="center" class="main-color"><%= drink.name %></h4>
 		  </div>
 		</li>
 	<% end %>

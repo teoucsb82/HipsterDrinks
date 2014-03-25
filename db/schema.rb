@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324232722) do
+ActiveRecord::Schema.define(version: 20140325205756) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20140324232722) do
     t.string   "filepicker_url"
     t.float    "average",        default: 0.0
     t.string   "slug"
+    t.string   "logline"
+    t.text     "hidden_fields",  default: ""
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"

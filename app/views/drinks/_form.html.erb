@@ -1,34 +1,65 @@
 <!-- THIS IS NOT DRY. Identical version lives in _modal.html.erb partial -->
-<div class="col-xs-8">
-<%= form_for(@drink) do |f| %>
+<script>
+var ready = function() {
+  $('.find-me').trigger('click')
+};
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+$(document).ready(ready);
+$(document).on('page:load', ready);
+</script>
+
+<div class="row" >
+  <div class="col-xs-6">
+  <%= form_for(@drink) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name, "Name (*)" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Drink Name", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :logline, "Logline" %>
+      <%= f.text_field :logline, class: "form-control", placeholder: "Snappy (one-sentence) drink description" %>
+    </div>
+
+
+    <fieldset id="drink-ingredients"> 
+      <table style="background: transparent">
+        <tr>
+          <td width="90%"><%= f.label :drink_ingredients, "Ingredients" %></td>
+          <td><%= link_to_add_association '+ add another ingredient', f, :drink_ingredients, 'data-association-insertion-node' => "#drink-ingredients ul", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|drink_ingredient| drink_ingredient.build_ingredient; drink_ingredient }, class: "btn btn-primary btn-sm find-me", style: "margin-bottom: 10px" %></td>
+        </tr>
+      </table>
+
+      <ul class="fa-ul"> 
+        <%= f.fields_for :drink_ingredients do |drink_ingredient| %> 
+          <%= render 'drink_ingredient_fields', f: drink_ingredient %> 
+        <% end %> 
+      </ul> 
+      
+
+    </fieldset> 
+    
   </div>
 
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_field :description, class: "form-control" %>
-  </div>  
+  <div class="col-xs-6">
+    <div class="form-group">
+      <%= f.label :description, "Description/Instructions (*)" %>
+      <%= f.text_area :description, rows: "5", class: "form-control", placeholder: "How do you make this drink?" %>
+    </div>  
 
-  <div class="form-group">
-    <%= f.label :filepicker_url, "Upload Pic:" %>
-    <%= f.filepicker_field :filepicker_url, dragdrop: true  %>
+    <div class="form-group">
+      <%= f.label :filepicker_url, "Upload Pic:" %>
+      <%= f.filepicker_field :filepicker_url, dragdrop: true  %>
+    </div>
+      <center>
+    <div class="form-actions">
+        <%= f.submit "Create New Drink", class: "btn btn-success btn-lg", style: "display: block; width: 100%;" %>
+      </div>
+    </center>
+    <% end %>
   </div>
-  
-  <fieldset id="drink-ingredients"> 
-    <ol> 
-      <%= f.fields_for :drink_ingredients do |drink_ingredient| %> 
-        <%= render 'drink_ingredient_fields', f: drink_ingredient %> 
-      <% end %> 
-    </ol> 
-    <%= link_to_add_association 'add ingredient', f, :drink_ingredients, 'data-association-insertion-node' => "#drink-ingredients ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|drink_ingredient| drink_ingredient.build_ingredient; drink_ingredient } %> 
-  </fieldset> 
-
-  <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
-  </div>
-<% end %>
-
 </div>
+<hr>
+
+<%= link_to 'Back', drinks_path %>
