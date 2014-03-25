@@ -1,0 +1,12 @@
+<% drinks = [] %>
+<% Drink.all.each do |drink| %>
+<% drinks << drink.name %>
+	<% if drink.ingredients.count > 0 %>
+		<% drink.ingredients.each do |i| %>
+			<% drinks << i.name %>
+		<% end %>
+	<% end %>
+<% end %>
+
+<div class="hidden" special="<%= drinks %>" id="drink-list">
+</div>

@@ -1,8 +1,18 @@
 <form id="searchForm" action="<%= drinks_url %>" method="get">
   <div class="form-group col-sm-4 col-sm-offset-2">
     <div class="input-group input-group-lg">
-      <input autofocus="true" type="text" class="form-control" placeholder="Find a cocktail" id="search" name="search">
-      <span class="input-group-addon btn"><i class="fa fa-search"></i></span>
+      <!-- <input autofocus="true" type="text" class="form-control" placeholder="Find a cocktail" id="search" name="search">
+      <span class="input-group-addon btn"><i class="fa fa-search"></i></span> -->
+
+			<input type="text" name="search" id="search_box">
+			<script>
+				var temp = $("#drink-list")[0].attributes.special.value;
+			  $('#search_box').typeahead({
+			    name: 'people',
+			    local: JSON.parse(temp)
+			  });
+			</script>
+			<input type="submit">
 
     </div>
   </div>
