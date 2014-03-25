@@ -12,6 +12,10 @@
 #
 
 class DrinkIngredient < ActiveRecord::Base
+	attr_reader :ingredient_attributes
 	belongs_to :drink
 	belongs_to :ingredient
+
+	accepts_nested_attributes_for :ingredient,
+										:reject_if => :all_blank
 end

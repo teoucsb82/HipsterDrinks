@@ -15,4 +15,5 @@
 //= require jquery.serializeJSON
 //= require bootstrap
 //= require bootstrap-typeahead-rails
+//= require cocoon
 //= require_tree .

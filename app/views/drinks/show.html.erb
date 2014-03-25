@@ -1,6 +1,42 @@
-
 <div class="container" style="border: 3px solid #dd4814">
-	<h1><%= @drink.name %> <%= render 'shared/facebook' %></h1>
+	<div class="row">
+		<div class="col-xs-6 col-xs-offset-1">
+
+			<!-- Photo -->
+			<center>
+				<h1><%= @drink.name %></h1>
+				<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
+				<%= link_to (filepicker_image_tag @drink.filepicker_url, h: 600, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
+				<br>
+				<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png", class: "btn btn-primary" %>
+				<% end %>
+			</center>
+		</div>
+
+		<!-- Information/Recipe -->
+		<div class="col-xs-4">
+				<table class="table table-bordered">
+					<h4 align="right" style="border-bottom: 1px solid black; padding-bottom: 5px">featuring</h4>
+					<% @drink.drink_ingredients.each do |di| %>
+						<tr>
+							<% parent_drink = Ingredient.find(di.ingredient_id) %>
+							<td><%= di.measurement_amount %></td>
+							<td><%= di.measurement_unit %></td>
+							<td style="text-align:right"><%= link_to parent_drink.name, 
+																							drinks_url(search: parent_drink.name) %></td>
+						</tr>
+						<% end %>
+				</table>
+		</div>
+	</div>
+
+
+
+
+
+
+
+	<%= render 'shared/facebook' %>
 	<h1>Average Rating:
 			<% @drink.average.floor.times do %>
 				<i class="fa fa-star main-color"></i>
@@ -39,12 +75,7 @@
 		<%# end %>
 	</ul> -->
 	
-	<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
-		<p>photo</p>
-		<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 160, h: 160, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
-		<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png" %></tr>
-	<% end %>
-
+	
 	<div style="border: 2px dashed black">
 		<!-- review input -->
 		<h1>Reviews</h1>

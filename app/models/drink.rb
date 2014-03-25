@@ -30,6 +30,11 @@ class Drink < ActiveRecord::Base
 	has_many :drink_ingredients
 	has_many :ingredients, :through => :drink_ingredients
 
+	accepts_nested_attributes_for :drink_ingredients,
+						:reject_if => :all_blank,
+						:allow_destroy => true
+	accepts_nested_attributes_for :ingredients
+
 	def self.search(search)
 	  if search
 	    where('name LIKE ? OR description LIKE ?', "%#{search}%", "%#{search}%")

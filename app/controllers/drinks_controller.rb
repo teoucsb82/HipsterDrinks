@@ -13,6 +13,10 @@ class DrinksController < ApplicationController
     # @drinks = @drinks.search(params[:search])
     # @drinks.sort_by!(&:average)
     # @drinks.reverse!
+    if @drinks.count == 1
+      redirect_to drink_url(@drinks.first)
+      return
+    end
     respond_to do |format|
       format.html { render :index }
       format.json { render :json => @drinks }
@@ -41,7 +45,7 @@ class DrinksController < ApplicationController
   def create
     @drink = Drink.new(drink_params)
     @drink.user_id = current_user.id
-
+    # fail
     respond_to do |format|
       if @drink.save
         flash[:success] = 'Drink was successfully created.' 
@@ -92,7 +96,12 @@ class DrinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drink_params
-      params.require(:drink).permit(:user_id, :name, :description, :filepicker_url)
+      params.require(:drink).permit!#(:name, :description, :filepicker_url,
+        # :drink_ingredients_attributes => {})
+      # (:name, :description, 
+      #                       :filepicker_url, :drink_ingredients_attributes,
+      #                       drink_ingredients_attributes: [])
+      # params[:drink][:drink_ingredients_attributes].values.first[:ingredient_attributes]
     end
 
     def authenticate_author

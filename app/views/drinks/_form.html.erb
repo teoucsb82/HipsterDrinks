@@ -2,17 +2,29 @@
 
 <%= form_for(@drink) do |f| %>
 
-  <div class="form-inputs">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_field :description %>
-    
+    <%= f.text_field :description, class: "form-control" %>
+  </div>  
 
+  <div class="form-group">
     <%= f.label :filepicker_url, "Upload Pic:" %>
     <%= f.filepicker_field :filepicker_url, dragdrop: true  %>
   </div>
+  
+  <fieldset id="drink-ingredients"> 
+    <ol> 
+      <%= f.fields_for :drink_ingredients do |drink_ingredient| %> 
+        <%= render 'drink_ingredient_fields', f: drink_ingredient %> 
+      <% end %> 
+    </ol> 
+    <%= link_to_add_association 'add ingredient', f, :drink_ingredients, 'data-association-insertion-node' => "#drink-ingredients ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|drink_ingredient| drink_ingredient.build_ingredient; drink_ingredient } %> 
+  </fieldset> 
 
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-primary" %>

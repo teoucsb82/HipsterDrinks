@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'will_paginate'
 gem 'friendly_id'
 gem 'bootstrap-typeahead-rails'
+gem 'cocoon'
 
 
 group :production do
