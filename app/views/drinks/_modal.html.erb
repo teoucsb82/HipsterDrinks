@@ -1,35 +1,78 @@
 <!-- THIS IS NOT DRY. Identical version lives in _form.html.erb partial -->
+<script>
+var ready = function() {
+  $('.find-me').trigger('click')
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
+</script>
 
 <div class="modal fade" id="addDrinkModal" tabindex="-1" role="dialog" aria-labelledby="addDrinkModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h2 class="modal-title" id="addDrinkModalLabel" align="center">Create A Cocktail</h2>
         </div>
+
         <div class="modal-body">
-          <%= form_for(Drink.new) do |f| %>
 
-            <div class="form-inputs">
-              <%= f.label :name %>
-              <%= f.text_field :name %>
 
-              <%= f.label :description %>
-              <%= f.text_field :description %>
+          <div class="row" >
+            <div class="col-xs-6">
+            <%= form_for(Drink.new) do |f| %>
+
+              <div class="form-group">
+                <%= f.label :name, "Name (*)" %>
+                <%= f.text_field :name, class: "form-control", placeholder: "Drink Name", autofocus: true %>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :logline, "Logline" %>
+                <%= f.text_field :logline, class: "form-control", placeholder: "Snappy (one-sentence) drink description" %>
+              </div>
+
+
+              <fieldset id="drink-ingredients"> 
+                <table style="background: transparent">
+                  <tr>
+                    <td style="padding-right: 10px"><%= f.label :drink_ingredients, "Ingredients" %></td>
+                    <td><%= link_to_add_association '+ add another ingredient', f, :drink_ingredients, 'data-association-insertion-node' => "#drink-ingredients ul", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|drink_ingredient| drink_ingredient.build_ingredient; drink_ingredient }, class: "btn btn-primary btn-sm find-me", style: "margin-bottom: 10px; text-decoration: none" %></td>
+                  </tr>
+                </table>
+
+                <ul class="fa-ul"> 
+                  <%= f.fields_for :drink_ingredients do |drink_ingredient| %> 
+                    <%= render 'drink_ingredient_fields', f: drink_ingredient %> 
+                  <% end %> 
+                </ul> 
+                
+
+              </fieldset> 
               
-
-              <%= f.label :filepicker_url, "Upload Pic:" %>
-              <%= f.filepicker_field :filepicker_url, dragdrop: true  %>
             </div>
 
+            <div class="col-xs-6">
+              <div class="form-group">
+                <%= f.label :recipe, "Recipe (*)" %>
+                <%= f.text_area :recipe, rows: "5", class: "form-control", placeholder: "How do you make this drink?" %>
+              </div>  
 
-            <div class="modal-footer">
-              <%= f.button :submit, class: "btn btn-primary" %>
+              <div class="form-group">
+                <%= f.label :filepicker_url, "Upload Pic:" %>
+                <%= f.filepicker_field :filepicker_url, dragdrop: true  %>
+              </div>
+                <center>
+              <div class="form-actions">
+                  <%= f.submit "Create New Drink", class: "btn btn-success btn-lg", style: "display: block; width: 100%;" %>
+                </div>
+              </center>
+              <% end %>
             </div>
-            <div class="form-actions">
-              <%#= f.button :submit, class: "btn btn-primary" %>
-            </div>
-          <% end %>
+          </div>
+
+
         </div>
 
       </div>

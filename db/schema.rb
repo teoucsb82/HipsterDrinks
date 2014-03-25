@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325205756) do
+ActiveRecord::Schema.define(version: 20140325225052) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140325205756) do
   create_table "drinks", force: true do |t|
     t.integer  "user_id",                      null: false
     t.string   "name",                         null: false
-    t.text     "description"
+    t.text     "recipe"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "filepicker_url"

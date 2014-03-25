@@ -18,7 +18,7 @@
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input type="hidden" name="user[email]" value="<%= "guest-" + Faker::Name.first_name.to_s + "-" + rand(10000).to_s %>">
               <input type="hidden" name="user[password]" value="password">
-              <input type="submit" value="Guest Login" class="btn btn-success">
+              <input type="submit" value="Log In As Guest" class="btn btn-success" style="margin-left: 4px; margin-top:-1px">
       </form>
     <% end %>
 
@@ -39,6 +39,7 @@
         <% end %>       
       </ul>
     </div>
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 

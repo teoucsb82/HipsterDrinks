@@ -5,17 +5,19 @@
 #  id             :integer          not null, primary key
 #  user_id        :integer          not null
 #  name           :string(255)      not null
-#  description    :text
+#  recipe         :text
 #  created_at     :datetime
 #  updated_at     :datetime
 #  filepicker_url :string(255)
 #  average        :float            default(0.0)
 #  slug           :string(255)
+#  logline        :string(255)
+#  hidden_fields  :text             default("")
 #
 
 class Drink < ActiveRecord::Base
 	validates :name, presence: true
-	validates :description, presence: true
+	validates :recipe, presence: true
 	validates :user_id, presence: true
 	
 	extend FriendlyId
@@ -37,7 +39,7 @@ class Drink < ActiveRecord::Base
 
 	def self.search(search)
 	  if search
-	    where('name LIKE ? OR description LIKE ? OR logline LIKE ? OR hidden_fields LIKE ?', 
+	    where('name LIKE ? OR recipe LIKE ? OR logline LIKE ? OR hidden_fields LIKE ?', 
 	    			"%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
 	  else
 	    scoped

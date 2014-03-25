@@ -5,12 +5,14 @@
 #  id             :integer          not null, primary key
 #  user_id        :integer          not null
 #  name           :string(255)      not null
-#  description    :text
+#  recipe         :text
 #  created_at     :datetime
 #  updated_at     :datetime
 #  filepicker_url :string(255)
 #  average        :float            default(0.0)
 #  slug           :string(255)
+#  logline        :string(255)
+#  hidden_fields  :text             default("")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

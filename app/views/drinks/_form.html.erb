@@ -26,8 +26,8 @@ $(document).on('page:load', ready);
     <fieldset id="drink-ingredients"> 
       <table style="background: transparent">
         <tr>
-          <td width="90%"><%= f.label :drink_ingredients, "Ingredients" %></td>
-          <td><%= link_to_add_association '+ add another ingredient', f, :drink_ingredients, 'data-association-insertion-node' => "#drink-ingredients ul", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|drink_ingredient| drink_ingredient.build_ingredient; drink_ingredient }, class: "btn btn-primary btn-sm find-me", style: "margin-bottom: 10px" %></td>
+          <td style="padding-right: 10px"><%= f.label :drink_ingredients, "Ingredients" %></td>
+          <td><%= link_to_add_association '+ add another ingredient', f, :drink_ingredients, 'data-association-insertion-node' => "#drink-ingredients ul", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|drink_ingredient| drink_ingredient.build_ingredient; drink_ingredient }, class: "btn btn-primary btn-sm find-me", style: "margin-bottom: 10px; text-decoration: none" %></td>
         </tr>
       </table>
 
@@ -44,8 +44,8 @@ $(document).on('page:load', ready);
 
   <div class="col-xs-6">
     <div class="form-group">
-      <%= f.label :description, "Description/Instructions (*)" %>
-      <%= f.text_area :description, rows: "5", class: "form-control", placeholder: "How do you make this drink?" %>
+      <%= f.label :recipe, "Recipe (*)" %>
+      <%= f.text_area :recipe, rows: "5", class: "form-control", placeholder: "How do you make this drink?" %>
     </div>  
 
     <div class="form-group">

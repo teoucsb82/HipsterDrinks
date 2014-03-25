@@ -17,7 +17,7 @@
 		<!-- Average Rating / Vote Count / Favorite -->
 		<div class="col-xs-5">
 			<div>
-				<h1>Average Rating: <%= @drink.average %>
+				<h2>Average Rating: <%= @drink.average %>
 					<br>	
 					<% @drink.average.floor.times do %>
 						<i class="fa fa-star main-color"></i>
@@ -43,14 +43,14 @@
 					<% end %>
 
 					<small><%= @drink.comments.count %> votes</small>
-				</h1>
+				</h2>
 				<%= render 'favorite_form' %>
 			</div>
 			<div class="spacer"></div>
 
 			<!-- Ingredients -->
 			<table class="table" style="border: none">
-				<h4 align="right" style="border-bottom: 1px solid black; padding-bottom: 5px">featuring</h4>
+				<h3 align="right" style="border-bottom: 1px solid black; padding-bottom: 5px">featuring</h3>
 				<% @drink.drink_ingredients.each do |di| %>
 					<tr>
 
@@ -68,6 +68,8 @@
 			</table>
 
 			<div class="spacer"></div>
+			
+
 
 		</div>
 	</div>
@@ -76,8 +78,8 @@
 	
 	
 	<hr>
-	<p><h2>description</h2>
-		<%= simple_format(@drink.description) %>
+	<p><h2>Recipe</h2>
+		<%= simple_format(@drink.recipe) %>
 	</p>
 	<p>
 		Created by: <%= User.find(@drink.user_id).email %>
