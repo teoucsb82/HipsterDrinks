@@ -11,9 +11,8 @@
 #  filepicker_url :string(255)
 #  average        :float            default(0.0)
 #  slug           :string(255)
-#  logline        :string(255)
+#  logline        :text(255)
 #  hidden_fields  :text             default("")
-#
 
 class Drink < ActiveRecord::Base
 	validates :name, presence: true

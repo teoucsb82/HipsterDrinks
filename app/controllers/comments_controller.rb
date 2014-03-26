@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.author_id = current_user.id
     if @comment.save
-      flash[:success] = "Comment saved!"
+      flash[:success] = "Thanks for your review!"
     else
       flash[:danger] = @comment.errors.full_messages
     end
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def update
     get_comment
     if @comment.update(comment_params)
-      flash[:success] = 'Comment was successfully updated.' 
+      flash[:success] = 'Review was successfully updated.' 
       redirect_to :back
     else
       format.html { render :edit }

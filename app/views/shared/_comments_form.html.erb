@@ -5,38 +5,47 @@
 <% unless @drink.comments.find_by_author_id(current_user) == nil %>
   <% action = (:flag == :new) ? comments_url : comment_url(@drink.comments.find_by_author_id(current_user)) %>
   <% method = (:flag == :new) ? "post" : "patch" %>
-  <% message = (:flag == :new) ? "Create Review" : "Edit Review" %>
+  <% message = (:flag == :new) ? "Create Review" : "Update Review" %>
   <% b = @drink.comments.find_by_author_id(current_user).body %>
   <% r = @drink.comments.find_by_author_id(current_user).rating %>
 <% end %>
 
-<h2><%= message %></h2>
+<div class="container row">
+  <div class="col-xs-offset-1">
+    <h2><%= message unless message == "Update Review" %></h2>
+  </div>
+</div>
 
-<form class="form-horizontal" action="<%= action %>" method="POST">
-  <input type="hidden" name="_method" value="<%= method %>">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
-  <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
 
-  <span class="star-rating">
-    <input type="radio" name="comment[rating]" value="1" <%= "checked=\"checked\"" if r == 1 %> ><i></i>
-    <input type="radio" name="comment[rating]" value="2" <%= "checked=\"checked\"" if r == 2 %> ><i></i>
-    <input type="radio" name="comment[rating]" value="3" <%= "checked=\"checked\"" if r == 3 %> ><i></i>
-    <input type="radio" name="comment[rating]" value="4" <%= "checked=\"checked\"" if r == 4 %> ><i></i>
-    <input type="radio" name="comment[rating]" value="5" <%= "checked=\"checked\"" if r == 5 %> ><i></i>
-  </span>
-  <strong class="choice">Choose a rating</strong>
-
-  <div class="form-group">
-    <label for="user-comment" class="col-sm-2 control-label">Message</label>
-    <div class="col-sm-8">
-      <textarea type="textarea" name="comment[body]" class="form-control" id="user-comment" placeholder="Message (255 char max)" rows="3"><%= b %></textarea>
+<div class="row well">
+  <form class="form-horizontal" action="<%= action %>" method="POST">
+    <input type="hidden" name="_method" value="<%= method %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="comment[commentable_id]" value="<%= commentable_id %>">
+    <input type="hidden" name="comment[commentable_type]" value="<%= commentable_type %>">
+    
+    <div class="col-xs-7 col-xs-offset-1">
+      <div class="form-group">
+        <label for="user-comment">Message</label>
+          <textarea type="textarea" name="comment[body]" class="form-control" id="user-comment" placeholder="Message (255 char max)" rows="3"><%= b %></textarea>
+          <strong class="pull-right">-<%= current_user.email %></strong>
+      </div>
     </div>
-  </div>
- 	
- 	<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-  		<input type="submit" value="<%= message %>" class="btn btn-primary">
-  	</div>
-  </div>
-</form>
+
+    <div class="col-xs-3">
+      <strong class="choice">Choose a rating</strong><br>
+      <span class="star-rating">
+        <input type="radio" name="comment[rating]" value="1" <%= "checked=\"checked\"" if r == 1 %> ><i></i>
+        <input type="radio" name="comment[rating]" value="2" <%= "checked=\"checked\"" if r == 2 %> ><i></i>
+        <input type="radio" name="comment[rating]" value="3" <%= "checked=\"checked\"" if r == 3 %> ><i></i>
+        <input type="radio" name="comment[rating]" value="4" <%= "checked=\"checked\"" if r == 4 %> ><i></i>
+        <input type="radio" name="comment[rating]" value="5" <%= "checked=\"checked\"" if r == 5 %> ><i></i>
+      </span>
+      
+    </div>
+
+    <div class="form-group">
+      <input type="submit" value="<%= message %>" class="btn btn-primary"  style="margin-left: 15px; margin-top: 5px">      
+    </div>
+  </form>
+</div>

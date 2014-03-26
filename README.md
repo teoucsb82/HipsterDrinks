@@ -45,3 +45,4 @@ Add a "drinks you might like" section -- based off people you follow, do
 * Users Profile
 - comment out following stuff...not really necessary
 - focus on: tabbed display for "favorite drinks", "submitted drinks". for submitted drinks, give edit link options
+- show "recently viewed drinks"

@@ -11,6 +11,7 @@
 #  created_at         :datetime
 #  updated_at         :datetime
 #  admin              :boolean          default(FALSE)
+#  slug               :string(255)
 #
 
 class User < ActiveRecord::Base

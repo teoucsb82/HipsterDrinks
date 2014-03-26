@@ -11,11 +11,12 @@ $mainColor: #2a9fd6;
 @import url("//fonts.googleapis.com/css?family=Droid+Sans:400,700");
 // @import url("//fonts.googleapis.com/css?family=Fascinate+Inline");
 @import url("//fonts.googleapis.com/css?family=Miltonian+Tattoo");
+@import url("//fonts.googleapis.com/css?family=Peralta");
 $baseFont: "Droid Sans";
-$brandFont: "Nothing You Could DO";
-$navbarFont: "Droid Sans";
-$headerFont: "Nothing You Could Do";
+$navbarFont: "Peralta";
 
+$headerFont: "Peralta";
+$brandFont: "Peralta";
 
 
 /*!
@@ -3659,6 +3660,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top-left-radius: 0;
 }
 .navbar {
+  font-family: $navbarFont;
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
@@ -3756,6 +3758,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-width: 1px 0 0;
 }
 .navbar-brand {
+  font-family: $brandFont;
   float: left;
   padding: 15px 15px;
   font-size: 18px;
@@ -6141,4 +6144,9 @@ li.drink {
 div .spacer {
   color: red;
   height: 50px;
+}
+
+div .review-item {
+  border: 1px solid $mainColor;
+  margin-bottom: 10px;
 }

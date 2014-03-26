@@ -1,0 +1,39 @@
+<div class="container col-xs-12">
+		<% if section_name == "edit-section" %>
+			<h2>My review</h2>
+			<div class="row well" id="previously-edited">
+				
+				<div class="col-xs-6 col-xs-offset-1">
+					<%= @drink.comments.find_by_author_id(current_user.id).body %><br>
+					<% @drink.comments.find_by_author_id(current_user.id).rating.times do %>
+							<i class="fa fa-star main-color"></i>
+					<% end %>
+				</div>
+				<div class="col-xs-4">
+					<a class="btn btn-primary btn-lg" id="add-review2"><i class="fa fa-edit"></i> Edit Review</a>
+					<%= link_to "Delete comment", comment_url(@drink.comments.find_by_author_id(current_user.id)), :method => :delete, class: "btn btn-lg btn-danger" %>
+				</div>
+
+			</div>
+		<% end %>
+
+		<div id="<%= section_name %>">
+			<a id="reviews"></a>
+			<% if logged_in? && current_user.id == @drink.user_id %>
+				Sorry, you cannot review your own drink!
+			<% elsif logged_in? && current_user.vote_count(@drink) < 1 %>
+				<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink", :flag => :new %>
+			<% elsif logged_in? && current_user.vote_count(@drink) >= 1 %>
+				<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink" %>
+			<% else %>
+				<!-- show gray'ed out form here instead -->
+				Please <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-window">Log In</button> to post a review. <br />
+				In a hurry?
+				<form action="<%= users_url %>" method="post">
+	              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	              <input type="hidden" name="user[email]" value="<%= "guest-" + Faker::Name.first_name.to_s + "-" + rand(10000).to_s %>">
+	              <input type="hidden" name="user[password]" value="password">
+	              <input type="submit" value="Log In As Guest" class="btn btn-success btn-sm">
+	      </form>
+			<% end %>
+		</div>
