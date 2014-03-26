@@ -43,13 +43,19 @@
 
 					<small><%= @drink.comments.count %> votes</small>
 				</h2>
+				<a href="#reviews" class="btn btn-primary btn-lg"><i class="fa fa-star-o"></i> Write a Review</a>
+				write a review
+				pinterest this
+				facebook share this
+				tweet this
+				favorite this
 				<%= render 'favorite_form' %>
 			</div>
 			<hr>
 
 			<!-- Ingredients -->
 			<table class="table" style="border: none">
-				<h3 align="left" style="padding-bottom: 5px">featuring</h3>
+				<h3 align="right" style="padding-bottom: 5px">featuring</h3>
 				<% @drink.drink_ingredients.each do |di| %>
 					<tr>
 
@@ -65,10 +71,9 @@
 					</tr>
 					<% end %>
 			</table>
-
-			<!-- <div class="spacer"></div> -->
-
 			<hr>
+
+			<!-- Recipe -->
 			<p><h2>make me</h2>
 				<%= simple_format(@drink.recipe) %>
 			</p>
@@ -77,12 +82,29 @@
 			</p>
 		</div>
 	</div>
+	<!-- end top section -->
+	<hr>
+	
+	<!-- comments etc -->
+	<div>
+		<ul class="nav nav-tabs" id="myTab">
+		  <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+		  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+		  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+		  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+		</ul>
 
-<hr>
-	
-	
+		<div class="tab-content">
+		  <div class="tab-pane active" id="home">...</div>
+		  <div class="tab-pane" id="profile">...</div>
+		  <div class="tab-pane" id="messages">...</div>
+		  <div class="tab-pane" id="settings">...</div>
+		</div>
+	</div>
+
 	<div style="border: 2px dashed black">
 		<!-- review input -->
+		<a id="reviews"></a>
 		<h1>Reviews</h1>
 		<% if logged_in? && current_user.id == @drink.user_id %>
 			Sorry, no reviewing your own drink!
@@ -108,3 +130,9 @@
 		<%= link_to 'Edit', edit_drink_path(@drink) %>
 	<% end %>
 
+
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>

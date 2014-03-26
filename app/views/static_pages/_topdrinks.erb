@@ -20,7 +20,7 @@
 					</strong></p>
 		    </div>
 		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
-		    <h4 align="center" class="main-color"><%= drink.name %></h4>
+		    <h2 align="center" class="main-color"><%= link_to drink.name, drink_url(drink) %></h2>
 		  </div>
 		</li>
 	<% end %>

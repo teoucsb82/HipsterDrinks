@@ -15,10 +15,14 @@
 
 class User < ActiveRecord::Base
 	attr_reader :password
+
 	validates :email, :presence => true, :uniqueness => true
 	validates :password, :presence => true, :length => { minimum: 6 }, :on => :create
 	validates :password_digest, :presence => true
 	after_initialize :ensure_session_token
+
+	extend FriendlyId
+  friendly_id :email, use: [:slugged, :finders]
 
 	has_many :drinks, dependent: :destroy
 	
