@@ -32,6 +32,9 @@ class DrinksController < ApplicationController
       end
     end
     @related_drinks = related_drinks.uniq
+    if @related_drinks.count > 8
+      @related_drinks = @related_drinks.shift(8)
+    end
 
     render :show
   end

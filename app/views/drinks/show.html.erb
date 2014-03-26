@@ -23,7 +23,7 @@ $(function () {
             $(this).find('.caption').fadeOut(250); //.fadeOut(205)
         }
     );  
-    
+
  });
 </script>
 <% section_name = (logged_in? && current_user.vote_count(@drink) >= 1) ? "edit-section" : "reviews-section" %>
@@ -36,9 +36,14 @@ $(function () {
 			<center>
 				<h1><strong><%= @drink.name %></strong></h1>
 				<h4>"<%= @drink.logline %>"</h4>
+
 				<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
 					<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 500, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
 					<%#= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png", class: "btn btn-primary" %>
+				<% end %>
+
+				<% if logged_in? && current_user.id == @drink.user_id %>
+					<%= link_to 'Edit Drink', edit_drink_path(@drink), class: "btn btn-success", style: "width:110%" %>
 				<% end %>
 			</center>
 		</div>
@@ -135,7 +140,7 @@ $(function () {
 		<div id="<%= section_name %>">
 			<a id="reviews"></a>
 			<% if logged_in? && current_user.id == @drink.user_id %>
-				Sorry, you cannot review your own drink!
+				<h3>Sorry, you cannot review your own drink!</h3>
 			<% elsif logged_in? && current_user.vote_count(@drink) < 1 %>
 				<%= render "shared/comments_form", commentable_id: @drink.id, commentable_type: "Drink", :flag => :new %>
 			<% elsif logged_in? && current_user.vote_count(@drink) >= 1 %>
@@ -153,10 +158,5 @@ $(function () {
 			<% end %>
 		</div>
   </div> 
+  <%= link_to "<< Back To Drinks Index", drinks_url, class: "btn btn-primary btn-lg" %>
 </div>
-
-	<%= link_to "back", drinks_url %>
-
-	<% if logged_in? && current_user.id == @drink.user_id %>
-		<%= link_to 'Edit', edit_drink_path(@drink) %>
-	<% end %>
