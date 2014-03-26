@@ -7,9 +7,8 @@
 				<h1><strong><%= @drink.name %></strong></h1>
 				<h4>"<%= @drink.logline %>"</h4>
 				<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
-				<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 500, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
-				<br>
-				<%= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png", class: "btn btn-primary" %>
+					<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 500, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
+					<%#= filepicker_save_button "Download Image", @drink.filepicker_url, "image/png", class: "btn btn-primary" %>
 				<% end %>
 			</center>
 		</div>
@@ -17,7 +16,7 @@
 		<!-- Average Rating / Vote Count / Favorite -->
 		<div class="col-xs-5">
 			<div>
-				<h2>Average Rating: <%= @drink.average %>
+				<h2 align="center">Average Rating: <%= @drink.average %>
 					<br>	
 					<% @drink.average.floor.times do %>
 						<i class="fa fa-star main-color"></i>
@@ -46,11 +45,11 @@
 				</h2>
 				<%= render 'favorite_form' %>
 			</div>
-			<div class="spacer"></div>
+			<hr>
 
 			<!-- Ingredients -->
 			<table class="table" style="border: none">
-				<h3 align="right" style="border-bottom: 1px solid black; padding-bottom: 5px">featuring</h3>
+				<h3 align="left" style="padding-bottom: 5px">featuring</h3>
 				<% @drink.drink_ingredients.each do |di| %>
 					<tr>
 
@@ -67,23 +66,20 @@
 					<% end %>
 			</table>
 
-			<div class="spacer"></div>
-			
+			<!-- <div class="spacer"></div> -->
 
-
+			<hr>
+			<p><h2>make me</h2>
+				<%= simple_format(@drink.recipe) %>
+			</p>
+			<p>
+				Submitted by: <%= link_to User.find(@drink.user_id).email, user_url(@drink.user_id) %>
+			</p>
 		</div>
 	</div>
 
-
+<hr>
 	
-	
-	<hr>
-	<p><h2>Recipe</h2>
-		<%= simple_format(@drink.recipe) %>
-	</p>
-	<p>
-		Created by: <%= User.find(@drink.user_id).email %>
-	</p>
 	
 	<div style="border: 2px dashed black">
 		<!-- review input -->
