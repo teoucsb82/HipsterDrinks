@@ -1,47 +1,22 @@
-<h2>All Reviews (<%= @drink.comments.count %>)</h2>
-
-<div class="row review-item well">
-	<div class="col-xs-2">
-		<h4><%= link_to "user", "#" %></h4>
-	</div>
-	<div class="col-xs-2">
-		<h4><%= link_to "rating", "#" %></h4>
-	</div>
-	<div class="col-xs-6">
-		<h4><%= link_to "review", "#" %></h4>
-	</div>
-	<div class="col-xs-2">
-		<h4><%= link_to "posted date", "#" %></h4>
-	</div>
-</div>
-
+<table class="table" style="border: none">
+	<h3 align="right" style="padding-bottom: 5px">all reviews</h3>
 	<% @drink.comments.order('rating asc').each do |comment| %>
-		<div class="row review-item well">
-			
-			<!-- user -->
-			<div class="col-xs-2">
-				<%= link_to User.find(comment.author_id).email, user_url(User.find(comment.author_id)) %>
-			</div>
-
-			<!-- rating -->
-			<div class="col-xs-2">
+		<tr>
+			<td>
 				<% comment.rating.times do %>
 					<i class="fa fa-star main-color"></i>
 				<% end %>
-			</div>
+				<br>
+				<p>
+					<%= comment.body %>
+				</p>
 
-			<!-- comment -->
-			<div class="col-xs-6">
-				<%= comment.body %>
-				<% if logged_in? && (current_user.id == comment.author_id || current_user == @user) %>
-					<%= link_to "Delete comment", comment_url(comment), :method => :delete, class: "btn btn-xs btn-danger" %>
-				<% end %>
-			</div>
+				<em class="pull-right"><%= link_to User.find(comment.author_id).email, user_url(User.find(comment.author_id)) %></em>
 
-			<!-- created date -->
-			<div class="col-xs-2">
-				created
-				<%= comment.created_at %>
-			</div>
-		</div>
+			</td>
+		</tr>
 	<% end %>
+</table>
+
+
+

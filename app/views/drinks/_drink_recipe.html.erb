@@ -1,0 +1,27 @@
+<!-- Ingredients -->
+<table class="table" style="border: none">
+	<h3 align="right" style="padding-bottom: 5px">featuring</h3>
+	<% @drink.drink_ingredients.each do |di| %>
+		<tr>
+
+			<% unless di.ingredient_id.nil? %>
+				<% parent_drink = Ingredient.find(di.ingredient_id) %>
+				<td width="50%" style="text-align:right">
+					<%= di.measurement_amount %> <%= di.measurement_unit %>
+				</td>
+				<td style="text-align:right">
+					<%= link_to parent_drink.name, drinks_url(search: parent_drink.name) %>
+				</td>
+			<% end %>
+		</tr>
+		<% end %>
+</table>
+<hr>
+
+<!-- Recipe -->
+<p><h2 align="right">make me</h2>
+	<%= simple_format(@drink.recipe) %>
+</p>
+<p>
+	Submitted by: <%= link_to User.find(@drink.user_id).email, user_url(@drink.user_id) %>
+</p>

@@ -25,6 +25,14 @@ class DrinksController < ApplicationController
   # GET /drinks/1.json
   def show
     Drink.average(@drink)
+    related_drinks = []
+    @drink.ingredients.each do |i|
+      i.drinks.each do |d|
+        related_drinks << d unless @drink == d
+      end
+    end
+    @related_drinks = related_drinks.uniq
+
     render :show
   end
 
@@ -50,7 +58,7 @@ class DrinksController < ApplicationController
         # need this to bootstrap ingredient names and make them searchable
         @drink.drink_ingredients.each do |di|
            unless di.ingredient_id.nil?
-            @drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+            @drink.hidden_fields += (Ingredient.find(di.ingredient_id).name.capitalize + " ")
           end
         end
         @drink.save

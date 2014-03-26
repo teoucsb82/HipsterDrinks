@@ -1,12 +1,13 @@
 <% drinks = [] %>
 <% Drink.all.each do |drink| %>
-<% drinks << drink.name %>
+<% drinks << drink.name.titleize %>
 	<% if drink.ingredients.count > 0 %>
 		<% drink.ingredients.each do |i| %>
-			<% drinks << i.name %>
+			<% drinks << i.name.titleize %>
 		<% end %>
 	<% end %>
 <% end %>
+
 
 <div class="hidden" special="<%= drinks.uniq %>" id="drink-list">
 </div>
