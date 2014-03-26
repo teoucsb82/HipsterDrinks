@@ -43,13 +43,15 @@
 
 					<small><%= @drink.comments.count %> votes</small>
 				</h2>
-				<a href="#reviews" class="btn btn-primary btn-lg"><i class="fa fa-star-o"></i> Write a Review</a>
-				
-				<%= render 'pinterest' %>
-				<%= tweet_button %>
-				<%= render 'shared/facebook' %>
+				<center>
+					<a href="#reviews" class="btn btn-primary btn-lg"><i class="fa fa-star-o"></i> Write a Review</a>
+					
+					<%= render 'pinterest' %>
+					<%= tweet_button %>
+					<%= render 'shared/facebook' %>
 
-				<%= render 'favorite_form' %>
+					<%#= render 'favorite_form' %>
+				</center>
 			</div>
 			<hr>
 
