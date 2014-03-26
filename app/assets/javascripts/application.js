@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require bootstrap-typeahead-rails
 //= require cocoon
+//= require pin_it
 //= require_tree .

@@ -11,10 +11,10 @@ class DrinksController < ApplicationController
               .order(sort_column + " " + sort_direction)
               .paginate(:per_page => 10, :page => params[:page])
 
-    # if @drinks.count == 1
-    #   redirect_to drink_url(@drinks.first)
-    #   return
-    # end
+    if @drinks.count == 1
+      redirect_to drink_url(@drinks.first)
+      return
+    end
     respond_to do |format|
       format.html { render :index }
       format.json { render :json => @drinks }
