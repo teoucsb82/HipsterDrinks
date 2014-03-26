@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325225052) do
+ActiveRecord::Schema.define(version: 20140326010610) do
 
   create_table "comments", force: true do |t|
     t.text     "body",             null: false
@@ -36,16 +36,16 @@ ActiveRecord::Schema.define(version: 20140325225052) do
   add_index "drink_ingredients", ["ingredient_id"], name: "index_drink_ingredients_on_ingredient_id"
 
   create_table "drinks", force: true do |t|
-    t.integer  "user_id",                      null: false
-    t.string   "name",                         null: false
+    t.integer  "user_id",                                  null: false
+    t.string   "name",                                     null: false
     t.text     "recipe"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "filepicker_url"
-    t.float    "average",        default: 0.0
+    t.float    "average",                    default: 0.0
     t.string   "slug"
-    t.string   "logline"
-    t.text     "hidden_fields",  default: ""
+    t.text     "logline",        limit: 255
+    t.text     "hidden_fields",              default: ""
   end
 
   add_index "drinks", ["name"], name: "index_drinks_on_name"
