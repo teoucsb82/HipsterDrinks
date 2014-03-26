@@ -57,7 +57,6 @@ class DrinksController < ApplicationController
 
     respond_to do |format|
       if @drink.save
-
         # need this to bootstrap ingredient names and make them searchable
         @drink.drink_ingredients.each do |di|
            unless di.ingredient_id.nil?

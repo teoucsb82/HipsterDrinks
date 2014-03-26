@@ -29,12 +29,6 @@ Add a "drinks you might like" section -- based off people you follow, do
 
 # Wed Goals
 
-* Drink show page
-- Comments layout/rendering/interface. Maybe lose the tabbed interface, overkill (1hr - 11am)
-- "Related drinks" section w/ pictures links (similar to main page) (1hr - 12p)
-- On related drinks and front page, change the way picture works. Should have image w/ name + stars displayed below it. On mouseover, give the logline
-- Add edit button if you own the drink, make it prominent
-
 * Drinks index page
 - Clean up page. Add images sorted by rating (think nv.com). 30 min
 -Have tabbed display here to show "ALL DRINKS" (default), "FRESH DRINKS" (new stuff), and "The Essentials" (top 10-20 drinks... think seed drinks). 1 hr
@@ -46,3 +40,6 @@ Add a "drinks you might like" section -- based off people you follow, do
 - comment out following stuff...not really necessary
 - focus on: tabbed display for "favorite drinks", "submitted drinks". for submitted drinks, give edit link options
 - show "recently viewed drinks"
+
+KNOWN BUGS -- 
+edit page not working properly. displaying (and saving...) extra fields it shouldn't be

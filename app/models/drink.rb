@@ -34,7 +34,9 @@ class Drink < ActiveRecord::Base
 	accepts_nested_attributes_for :drink_ingredients,
 						:reject_if => :all_blank,
 						:allow_destroy => true
-	accepts_nested_attributes_for :ingredients
+	accepts_nested_attributes_for :ingredients,
+						:reject_if => :all_blank,
+						:allow_destroy => true
 
 	def self.search(search)
 	  if search

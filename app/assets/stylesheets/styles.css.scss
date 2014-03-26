@@ -5937,10 +5937,6 @@ legend {
   height: 500px;
 }
 
-#searchForm {
-	position:absolute;
-  	top:40%;
-}
 
 
 /* RESPONSIVE CSS
@@ -6149,4 +6145,53 @@ div .spacer {
 div .review-item {
   border: 1px solid $mainColor;
   margin-bottom: 10px;
+}
+
+.box {
+    margin: 5px;
+    padding: 5px;
+    font-size: 11px;
+    line-height: 1.4em;
+    float: left;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #444;
+    width: 214px;
+}
+
+.box img {
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.img-description {
+    margin: 10px 0 5px;
+}
+
+
+#searchForm {
+  position:absolute;
+  top:40%;
+  margin-left: 400px;
+}
+
+#search_box {
+  width: 200px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+#search_box2 {
+  width: 500px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.tt-hint {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }

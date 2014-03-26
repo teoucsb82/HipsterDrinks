@@ -1,12 +1,17 @@
 <!-- THIS IS NOT DRY. Identical version lives in _modal.html.erb partial -->
-<script>
-var ready = function() {
-  $('.find-me').trigger('click')
-};
+<% unless flag == :edit %>
+  <script>
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
-</script>
+  var ready = function() {
+    $('.find-me').trigger('click')
+  };
+
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
+  </script>
+<% end %>
+
+
 
 <div class="row" >
   <div class="col-xs-6">

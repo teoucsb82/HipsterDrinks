@@ -1,32 +1,32 @@
 <ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
 	<% @top_drinks.each do |drink| %>
-		<li class="col-xs-4" style="list-style:none; margin-left:0px">
-		  <div class="thumbnail">
+		<li class="col-xs-3" style="list-style:none; margin-left:0px">
+		  <div class="thumbnail box">
 		    <div class="caption">
-	        <h3><%= link_to drink.name, drink_url(drink) %></h3>
-	        <p><%= link_to drink.logline, drink_url(drink) %></p>
+	        <h3 align="center"><%= link_to drink.name, drink_url(drink) %></h3>
+	        <p align="center"><%= link_to drink.logline, drink_url(drink) %></p>
 		    </div>
 		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
 		    
-		  </div>
-		  <div class="row">
-		  	<center>
-			  	<h4><%= link_to drink.name, drink %></h4>
-				  <strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="right">
-		        	<% drink.average.floor.times do %>
-								<i class="fa fa-star main-color"></i>
-							<% end %>
-							<% remainder = drink.average %>
+		    <h4 align="center"><%= link_to drink.name, drink %></h4>
+		    
+		    <center>
+			    <strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="right">
+	        	<% drink.average.floor.times do %>
+							<i class="fa fa-star main-color"></i>
+						<% end %>
+						<% remainder = drink.average %>
 
-							<% while remainder >= 1 %>
-								<% remainder -= 1 %>
-							<% end %>
-							<% if remainder >= 0.5 %>
-								<i class="fa fa-star-half main-color"></i>
-							<% end %>
-						</strong>
-					</center>
-			</div>
+						<% while remainder >= 1 %>
+							<% remainder -= 1 %>
+						<% end %>
+						<% if remainder >= 0.5 %>
+							<i class="fa fa-star-half main-color"></i>
+						<% end %>
+					</strong>
+				</center>
+		  </div>
+
 			<div class="spacer"></div>
 		</li>
 	<% end %>
