@@ -9,7 +9,7 @@ class DrinksController < ApplicationController
   def index
     @drinks = Drink.search(params[:search])
               .order(sort_column + " " + sort_direction)
-              .paginate(:per_page => 10, :page => params[:page])
+              .paginate(:per_page => 12, :page => params[:page])
 
     if @drinks.count == 1
       redirect_to drink_url(@drinks.first)
@@ -18,6 +18,7 @@ class DrinksController < ApplicationController
     respond_to do |format|
       format.html { render :index }
       format.json { render :json => @drinks }
+      format.js
     end
   end
 

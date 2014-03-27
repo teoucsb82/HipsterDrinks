@@ -1,24 +1,75 @@
-<div class="container">
-<h4 text-align="right">this is right text</h4>
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= sortable "user_id", "User" %></th>
-      <th><%= sortable "name", "Name" %></th>
-      <th><%= sortable "recipe", "Recipe" %></th>
-      <th><%= sortable "average", "Rating" %></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<script type="text/javascript">
+$(document).ready(function(){
+ 
+    $("[rel='tooltip']").tooltip();    
+ 
+    $('#hover-cap-4col .thumbnail').hover(
+        function(){
+            $(this).find('.caption').fadeIn(250); //.fadeIn(250)
+        },
+        function(){
+            $(this).find('.caption').fadeOut(250); //.fadeOut(205)
+        }
+    );    
+});        
+</script>
 
-  <tbody>
-    <% @drinks.each do |drink| %>
-      <%= render drink %>
-    <% end %>
-  </tbody>
-</table>
+<% if @drinks.count == 0 %>
+  <div class="container">
+    <h1 align="center" style="margin-top: 150px">No results found, please try your search again!</h1>
 
-<%= will_paginate @drinks %>
-</div>
+  </div>
+<%= render 'static_pages/search_form' %>
+<% else %>
+
+  <div class="container" id="drinks">
+    <% counter = 0 %>
+    <ul>
+      <li style="list-style:none; margin-right: 50px; margin-bottom: 20px"><h3 align="right">Sort by <%= sortable "name", "Name" %> <%= sortable "average", "Rating" %></h3></li>
+    </ul>
+
+    <ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
+      <% @drinks.each do |drink| %>
+        <% counter += 1 %>
+        <li class="col-xs-3" style="list-style:none; margin-left:0px">
+          <div class="thumbnail box">
+            <div class="caption">
+              <h3 align="center"><%= link_to drink.name, drink_url(drink) %></h3>
+              <p align="center"><%= link_to drink.logline, drink_url(drink) %></p>
+            </div>
+            <% if drink.filepicker_url == "" %>
+              <center><i class="fa fa-glass fa-5x main-color"></i></center>
+            <% else %>
+              <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
+            <% end %>
+            
+            <h4 align="center"><%= link_to drink.name, drink %></h4>
+            
+            <center>
+              <strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="right">
+                <% drink.average.floor.times do %>
+                  <i class="fa fa-star main-color"></i>
+                <% end %>
+                <% remainder = drink.average %>
+
+                <% while remainder >= 1 %>
+                  <% remainder -= 1 %>
+                <% end %>
+                <% if remainder >= 0.5 %>
+                  <i class="fa fa-star-half main-color"></i>
+                <% end %>
+              </strong>
+            </center>
+          </div>
+        </li>
+        <% if counter % 4 == 0 %>
+          <div class="row"></div>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <!-- , w: 160, h: 160 -->
+
+    <%= will_paginate @drinks %>
+  </div>
+<% end %>
