@@ -5944,7 +5944,7 @@ legend {
 @media (max-width: 768px) {
 
   .carousel-inner>.item>img, .carousel-inner>.item>a>img {
-  	max-width:inherit;
+    max-width:inherit;
   }
 
   .carousel-caption p {
@@ -6072,7 +6072,6 @@ li.drink {
 //     border: none;
 // }
 
-/* drink display */
 
 #hover-cap-4col .thumbnail {
     position:relative;
@@ -6099,34 +6098,6 @@ li.drink {
   color: $textColor;
   text-decoration: none;
 }
-
-#hover-cap-4col .thumbnail {
-    position:relative;
-    overflow:hidden;
-    border: 2px solid $mainColor;
-}
-
-.caption {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(0,0,0,0.7);
-    width: 100%;
-    height: 100%;
-    color: $textColor !important;
-}
-
-.caption a {
-  text-decoration: none;
-}
-
-.caption p a {
-  color: $textColor;
-  text-decoration: none;
-}
-
-//////////////////////////////////////////////////////
 
 .drink-header {
   font-variant: small-caps;
@@ -6189,19 +6160,7 @@ div .review-item {
     width: 214px;
 }
 
-.small-box {
-    margin: 5px;
-    padding: 5px;
-    font-size: 11px;
-    line-height: 1.4em;
-    float: left;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 10px #444;
-}
-
-.box .small-box img {
+.box img {
     width: 100%;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -6217,7 +6176,7 @@ div .review-item {
   position:absolute;
   top:40%;
   margin-left: 400px;
-  z-index: 1000000;
+  z-index: 10000;
 }
 
 #search_box {
@@ -6230,12 +6189,11 @@ div .review-item {
   width: 500px;
   height: 40px;
   border-radius: 10px;
-  z-index: 1000000;
+  z-index: 10000;
 }
 
 .tt-hint {
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  z-index: 1000000;
 }
