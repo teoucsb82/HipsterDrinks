@@ -1,24 +1,24 @@
-<% provide(:title, @title) %>
-<div class="container">
-  <div class="row">
-    <aside class="col-xs-4">
-      <section>
-        <%= gravatar_for @user %>
-        <h1><%= @user.email %></h1>
-        <span><%= link_to "view my profile", @user %></span>
+# <% provide(:title, @title) %>
+# <div class="container">
+#   <div class="row">
+#     <aside class="col-xs-4">
+#       <section>
+#         <%= gravatar_for @user %>
+#         <h1><%= @user.email %></h1>
+#         <span><%= link_to "view my profile", @user %></span>
 
-      </section>
-    </aside>
+#       </section>
+#     </aside>
 
-    <div class="col-xs-8">
-      <h3>Favorite Drinks</h3>
-      <% @user.favorite_drinks.each do |drink| %>
-        <ul>
-          <li>
-            <%= link_to drink.name, drink_url(drink) %>
-          </li>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-</div>
+#     <div class="col-xs-8">
+#       <h3>Favorite Drinks</h3>
+#       <% @user.favorite_drinks.each do |drink| %>
+#         <ul>
+#           <li>
+#             <%= link_to drink.name, drink_url(drink) %>
+#           </li>
+#         </ul>
+#       <% end %>
+#     </div>
+#   </div>
+# </div>

@@ -34,8 +34,9 @@ $(function () {
 
 			<!-- Photo -->
 			<center>
-				<h1><strong><%= @drink.name %></strong></h1>
+				<h1><strong><%= @drink.name %> <%= render 'favorite_form' %></strong></h1>
 				<h4>"<%= @drink.logline %>"</h4>
+
 
 				<% unless @drink.filepicker_url == "" || @drink.filepicker_url.nil? %>
 					<%= link_to (filepicker_image_tag @drink.filepicker_url, w: 500, fit: 'clip'), @drink.filepicker_url, :target => "_blank" %>
@@ -88,7 +89,7 @@ $(function () {
 					<%= tweet_button %>
 					<%= render 'shared/facebook' %>
 
-					<%#= render 'favorite_form' %>
+					
 				</center>
 			</div>
 			<hr>

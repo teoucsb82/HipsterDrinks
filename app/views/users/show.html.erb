@@ -6,41 +6,38 @@
 				<h1>
 				  <%= gravatar_for @user %>
 				  <%= @user.email %>
-				  <br>
+				  <p ></p>
 		      <%= render 'follow_form' if logged_in? %>
 				</h1>
 			</section>
-			<section>
-				<%= render 'stats' %>
-			</section>
-
-			<section>
-				<%= render 'favorite_stats' %>
-				<ul>
-					<% @user.favorite_drinks.each do |favdrink| %>
-						<li>
-							<%= link_to favdrink.name, drink_url(favdrink) %>
-						</li>
-					<% end %>
-				</ul>
-			</section>
+			
 		</aside>
 
 		<div class="col-xs-8">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs">
+			  <li class="active"><a href="#favorite-drinks" data-toggle="tab">Favorite Drinks (<%= @user.favorite_drinks.count %>)</a></li>
+			  <li><a href="#submitted-drinks" data-toggle="tab">Submitted Drinks (<%= @user.drinks.count %>)</a></li>
+			  <li><a href="#following" data-toggle="tab">Following (<%= @user.followed_users.count %>)</a></li>
+			  <li><a href="#followers" data-toggle="tab">Followers (<%= @user.followers.count %>)</a></li>
+			</ul>
 
-			<div id="favorite-drinks">
-				<%#= render "favorite_drinks" %>
+			<!-- Tab panes -->
+			<div class="tab-content" style="margin-top:20px">
+			  <div class="tab-pane active" id="favorite-drinks">
+			  	<%= render 'favorite_drinks' %>
+			  </div>
+			  <div class="tab-pane" id="submitted-drinks">
+			  	<%= render "submitted_drinks" %>
+			  </div>
+			  <div class="tab-pane" id="following">
+			  	<%= render 'following' %>
+			  </div>
+			  <div class="tab-pane" id="followers">
+			  	<%= render 'followers' %>
+			  </div>
 			</div>
 
-			<div id="submitted-drinks">
-				<%= render "submitted_drinks" %>
-			</div>
-
-<!-- 			<div>
-				<%#= render "wall" %>
-				<hr>
-				<%#= render "shared/comments_form", commentable_id: @user.id, commentable_type: "User" %>
-			</div> -->
 	  </div>
 	</div>
 </div>

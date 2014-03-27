@@ -2,7 +2,7 @@ $('#drinks').append('<ul class="thumbnails" id="hover-cap-4col" style="margin-le
 
 
 <% if @drinks.next_page %>
-	$('.pagination').replaceWith('<ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" ><%= j will_paginate(@drinks) %></ul>');
+	$('.pagination').replaceWith('<%= j will_paginate(@drinks) %>');
 <% else %>
 	$('.pagination').remove();
 <% end %>

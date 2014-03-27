@@ -1,11 +1,7 @@
 <% if logged_in? %>
-	<% unless current_user.id == @drink.user_id %>
-	  <div id="favorite_form">
-	  <% if current_user.favorite?(@drink) %>
-	    <%= render 'unfavorite' %>
-	  <% else %>
-	    <%= render 'favorite' %>
-	  <% end %>
-	  </div>
-	<% end %>
+  <% if current_user.favorite?(@drink) %>
+    <%= render 'unfavorite' %>
+  <% else %>
+    <%= render 'favorite' %>
+  <% end %>
 <% end %>

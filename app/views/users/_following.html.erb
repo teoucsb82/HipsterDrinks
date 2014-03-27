@@ -1,0 +1,9 @@
+<% @users = @user.followed_users %>
+<% if @users.any? %>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= link_to user.email, user %> <%= link_to gravatar_for(user, size: 35), user %></li>
+
+    <% end %>
+  </ul>
+<% end %>
