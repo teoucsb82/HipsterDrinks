@@ -25,6 +25,7 @@ class DrinksController < ApplicationController
   # GET /drinks/1.json
   def show
     Drink.average(@drink)
+
     related_drinks = []
     @drink.ingredients.each do |i|
       i.drinks.each do |d|
@@ -32,10 +33,13 @@ class DrinksController < ApplicationController
       end
     end
     @related_drinks = related_drinks.uniq
-    if @related_drinks.count > 8
-      @related_drinks = @related_drinks.shift(8)
+    if @related_drinks.count > 6
+      @related_drinks = @related_drinks.shift(6)
     end
 
+    @related_drinks.sort_by! { |d| d.average }
+    @related_drinks.reverse!
+    
     render :show
   end
 
