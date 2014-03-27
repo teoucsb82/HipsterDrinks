@@ -4,8 +4,8 @@ namespace :db do
     User.create!(
                  email: "foobar",
                  password: "foobar")
-    10.times do |n|
-      email = "#{Faker::Name.name.to_s}-" + rand(100).to_s + "@hipsterdrinks.com"
+    20.times do |n|
+      email = "#{Faker::Internet.user_name.to_s}-" + rand(100).to_s
       password  = "password"
       User.create!(
                    email: email,
