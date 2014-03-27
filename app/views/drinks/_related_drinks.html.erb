@@ -1,5 +1,7 @@
+<% counter = 0 %>
 <ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
 	<% @related_drinks.each do |drink| %>
+		<% counter += 1 %>
 		<li class="col-xs-4" style="list-style:none; margin-left:0px">
 		  <div class="thumbnail small-box">
 		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
@@ -23,7 +25,9 @@
 				</center>
 		  </div>
 
-			<div class="spacer"></div>
 		</li>
+		<% if counter % 3 == 0 %>
+		  <div class="row"></div>
+	  <% end %>
 	<% end %>
 </ul>

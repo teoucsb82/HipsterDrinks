@@ -27,7 +27,7 @@ Add a "drinks you might like" section -- based off people you follow, do
 *** Add "build a bar" section to USERS. 
 
 
-# Wed Goals
+# Thurs
 
 * Drinks index page
 - Clean up page. Add images sorted by rating (think nv.com). 30 min
@@ -35,6 +35,8 @@ Add a "drinks you might like" section -- based off people you follow, do
 - Add "sort by" links at the top. either do a dropdown, or list of options to click (prefer latter) (10 min)
 - Add endless scrolling (1hr)
 ~4pmish
+
+* Drinks show/main page -- fix layout on thumbnails...
 
 * Users Profile
 - comment out following stuff...not really necessary
