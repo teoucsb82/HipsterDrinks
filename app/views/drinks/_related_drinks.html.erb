@@ -4,7 +4,7 @@
 		<% counter += 1 %>
 		<li class="col-xs-4" style="list-style:none; margin-left:0px">
 		  <div class="thumbnail small-box">
-		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
+		    <a href="<%= drink_url(drink) %>"><%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %></a>
 		    
 		    <h4 align="center"><%= link_to drink.name, drink %></h4>
 		    
