@@ -1,8 +1,8 @@
-$('#drinks').append('<ul class="thumbnails" id="hover-cap-4col2" style="margin-left: 0; padding-left: 0" ><%= j render(@drinks) %></ul>');
+$('#drinks').append('<ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" ><%= j render(@drinks) %></ul>');
 
 
 <% if @drinks.next_page %>
-	$('.pagination').replaceWith('<%= j will_paginate(@drinks) %>');
+	$('.pagination').replaceWith('<ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" ><%= j will_paginate(@drinks) %></ul>');
 <% else %>
 	$('.pagination').remove();
 <% end %>

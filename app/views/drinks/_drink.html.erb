@@ -1,11 +1,11 @@
- <li class="col-xs-3" style="list-style:none; margin-left:0px">
+<li class="col-xs-3" style="list-style:none; margin-left:0px">
   <div class="thumbnail box">
     <div class="caption">
       <h3 align="center"><%= link_to drink.name, drink_url(drink) %></h3>
       <p align="center"><%= link_to drink.logline, drink_url(drink) %></p>
     </div>
-     <% if drink.filepicker_url == "" %>
-      <center><i class="fa fa-glass fa-5x main-color"></i></center>
+    <% if drink.filepicker_url == "" %>
+      <%= image_tag "http://09d34b2605c894cf3689-55532e225f0dd3533674afd740b8ae61.r49.cf2.rackcdn.com/458d748d685caf51b1fd1987e76dc225-cefc3d72026600a39da171c01fca53fc.gif", size: "250" %>
     <% else %>
       <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
     <% end %>
