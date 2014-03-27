@@ -6182,18 +6182,24 @@ div .review-item {
 #search_box {
   width: 200px;
   height: 30px;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
+/* main page search */
 #search_box2 {
   width: 500px;
-  height: 40px;
-  border-radius: 5px;
+  height: 50px;
+  border-radius: 6px;
   z-index: 10000;
+  
 }
 
 .tt-hint {
   width: 100%;
   height: 100%;
-  border-radius: 5px;
+  border-radius: 6px;
+}
+
+.tt-dropdown-menu {
+  width: 100%;
 }
