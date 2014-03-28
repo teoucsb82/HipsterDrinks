@@ -2,6 +2,9 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     User.create!(
+                 email: "guest",
+                 password: "password")
+    User.create!(
                  email: "foobar",
                  password: "foobar")
     20.times do |n|

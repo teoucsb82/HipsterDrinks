@@ -81,18 +81,6 @@ ActiveRecord::Schema.define(version: 20140326051120) do
     t.datetime "updated_at"
   end
 
-  create_table "recipes", force: true do |t|
-    t.integer  "drink_id",      null: false
-    t.integer  "ingredient_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "amount"
-    t.string   "measure"
-  end
-
-  add_index "recipes", ["drink_id"], name: "index_recipes_on_drink_id"
-  add_index "recipes", ["ingredient_id"], name: "index_recipes_on_ingredient_id"
-
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"

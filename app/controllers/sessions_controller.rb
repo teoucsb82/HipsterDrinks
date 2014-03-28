@@ -10,14 +10,15 @@ class SessionsController < ApplicationController
       params[:user][:email],
       params[:user][:password]
     )
-    session[:return_to] ||= request.referer
+    # session[:return_to] ||= request.referer
 		if @user.nil?
 			flash.now[:danger] = "Invalid login credentials"
 			render :new
 		else
 			self.current_user = @user
 			flash[:success] = "Welcome back, #{@user.email}!"
-			redirect_to session.delete(:return_to)
+			# redirect_to session.delete(:return_to)
+			redirect_to @user
 		end	
 	end
 

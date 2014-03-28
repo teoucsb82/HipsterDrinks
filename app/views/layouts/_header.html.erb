@@ -14,9 +14,9 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <% unless logged_in? %>
-      <form class="navbar-form navbar-right" action="<%= users_url %>" method="post">
+      <form class="navbar-form navbar-right" action="<%= session_url %>" method="post">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <input type="hidden" name="user[email]" value="<%= "guest-" + Faker::Name.first_name.to_s + "-" + rand(10000).to_s %>">
+              <input type="hidden" name="user[email]" value="guest">
               <input type="hidden" name="user[password]" value="password">
               <input type="submit" value="Log In As Guest" class="btn btn-success" style="margin-left: 4px; margin-top:-1px">
       </form>
