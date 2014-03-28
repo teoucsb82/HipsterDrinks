@@ -18,4 +18,5 @@
 //= require cocoon
 //= require pin_it
 //= require bootstrap-notify
+//= require bootstro.min.js
 //= require_tree .
