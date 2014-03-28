@@ -7,7 +7,7 @@
     <% if drink.filepicker_url == "" %>
       <center><i class="fa fa-glass fa-5x main-color"></i></center>
     <% else %>
-      <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
+      <%= link_to (filepicker_image_tag drink.filepicker_url, w: 250, h: 250), drink %>
     <% end %>
     
     <h4 align="center"><%= link_to drink.name, drink %></h4>
