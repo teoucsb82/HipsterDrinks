@@ -25,10 +25,26 @@ $(document).ready(function(){
   <div class="container" id="drinks">
     <% counter = 0 %>
     <ul>
-      <li style="list-style:none; margin-right: 50px; margin-bottom: 20px"><h3 align="right">Sort by <%= sortable "name", "Name" %> <%= sortable "average", "Rating" %></h3></li>
+      <li style="list-style:none; margin-right: 50px; margin-bottom: 20px">
+        <h3 align="right">
+          Sort by 
+          <%= sortable "name", "Name" %> • 
+          <%= sortable "average", "Rating" %> •
+          <div class="btn-group">
+              <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Alcohol <span class="caret"></span></button>
+             </button>
+           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <% Drink.alcohols.each do |alcohol| %>
+               <li><a tabindex="-1" href="?search=<%= alcohol %>"><%= alcohol %></a></li>
+              <% end %>
+           </ul>
+          </div>
+        </h3>
+      </li>
     </ul>
 
     <ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
+      <% $counter = 0 %>
       <%= render @drinks %>
     </ul>
 

@@ -47,6 +47,10 @@ class Drink < ActiveRecord::Base
 	  end
 	end
 
+	def self.alcohols
+		alcohols = ["Vodka", "Gin", "Rum", "Whiskey", "Tequila"].sort
+	end
+
 	def self.average(drink)
 		if drink.comments.count == 0
 			drink.average = 0

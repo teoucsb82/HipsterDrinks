@@ -1,12 +1,13 @@
-<form id="searchForm" action="<%= drinks_url %>" role="search">
-  <input type="text" name="search" id="search_box2" 
-    placeholder="Search by drink name or ingredient(s)">
-    <script>
-      var temp = $("#drink-list")[0].attributes.special.value;
-      $('#search_box2').typeahead({
-        name: 'people',
-        local: JSON.parse(temp)
-      });
-    </script>
-  <button type="submit" class="btn btn-sm btn-primary" value="Search" style="margin-top: 26px"><i class="fa fa-search fa-3x"></i></button>
-</form>
+<div id="searchForm">
+  <form action="<%= drinks_url %>" role="search">
+    <input type="text" name="search" id="search_box2" 
+      placeholder="Search by drink name or ingredient(s)">
+      <script>
+        var temp = $("#drink-list")[0].attributes.special.value;
+        $('#search_box2').typeahead({
+          local: JSON.parse(temp)
+        });
+      </script>
+    <button type="submit" class="btn btn-sm btn-primary" value="Search" style="margin-top: 26px"><i class="fa fa-search fa-3x"></i></button>
+  </form>
+</div>
