@@ -29,7 +29,7 @@
         <li><%= link_to "All Drinks", drinks_url %></li>
         
         <% if logged_in? %>
-          <li><button class="btn btn-primary header-button" data-toggle="modal" data-target="#addDrinkModal"><i class="fa fa-plus-circle"></i> Create A Cocktail</button></li>
+          <li><button class="btn btn-primary header-button btn-sm" style="margin-top:10px" data-toggle="modal" data-target="#addDrinkModal"><i class="fa fa-plus-circle"></i> Create A Cocktail</button></li>
         <% end %>       
       </ul>
     </div>
@@ -38,13 +38,13 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if logged_in? %>
-          <li><%= link_to "Users Index", users_url %></li>
+          <li><%= link_to "Forums", "#" %></li>
           <li><%= link_to "My Profile", user_url(current_user) %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><%= link_to "My Profile", user_url(current_user) %></li>
-              <li><%= link_to "Edit Profile", edit_user_url(current_user) %></li>
+              <!-- <li><%#= link_to "Edit Profile", edit_user_url(current_user) %></li> -->
               <li><%= link_to "Logout", session_url, method: :delete %></li>
             </ul>
           </li>

@@ -1,7 +1,7 @@
 <%#= render 'favorite_stats' %>
 <% counter = 0 %>
 <ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
-	<% @user.favorite_drinks.each do |drink| %>
+	<% @user.favorite_drinks.sort_by(&:average).reverse.each do |drink| %>
 		<% counter += 1 %>
 		<li class="col-xs-3" style="list-style:none; margin-left:0px">
 		  <div class="thumbnail">
