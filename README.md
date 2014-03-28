@@ -14,6 +14,7 @@ Built on Rails and reinforced with jQuery, [HipsterDrinks](www.hipsterdrinks.com
 [] Implement forum feature for users to discuss cocktails.
 [] Implement subsections for "new drinks", "popular drinks", and tabbed sorting for "drinks by alcohol"
 [] Implement database caching
+[] Convert Filepicker.io database to Amazon S3
 
 
 ## Bug fixes

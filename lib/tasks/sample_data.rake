@@ -55,6 +55,7 @@ namespace :db do
     Ingredient.create(name: "Grenadine")
     Ingredient.create(name: "Heavy Cream")
     Ingredient.create(name: "Honey")
+    Ingredient.create(name: "Honey Syrup")
     Ingredient.create(name: "Horseradish")
     Ingredient.create(name: "Hot Chocolate")
     Ingredient.create(name: "Ice")
@@ -68,6 +69,7 @@ namespace :db do
     Ingredient.create(name: "Lemon Zest")
     Ingredient.create(name: "Lemonade")
     Ingredient.create(name: "Lime")
+    Ingredient.create(name: "Lime Cordial")
     Ingredient.create(name: "Lime Juice")
     Ingredient.create(name: "Marmalade")
     Ingredient.create(name: "Mezcal")
@@ -575,11 +577,417 @@ namespace :db do
     end
     seed_drink.save
     ###########################
+    Ingredient.create(name: "Banks 5 Island Rum")
+    Ingredient.create(name: "Honey Syrup")
+
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Airmail",
+      recipe: "Shake with ice and strain into a chilled coupe. Top with 1oz Moet Imperial Champagne. Garnish with a lime wheel",
+      filepicker_url: "https://www.filepicker.io/api/file/IT5De7TSuqQopAhc2UNx",
+      logline: "It ought to make you fly high")
+    seed_drink = Drink.find_by_slug("airmail")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Banks 5 Island Rum").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lime Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Honey Syrup").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Flor de Cana Silver Dry Rum")
+    Ingredient.create(name: "Schonauer Apfel Schnapps")
+
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Apple Daiquiri",
+      recipe: "Shake with ice and strain into a chilled coupe.",
+      filepicker_url: "https://www.filepicker.io/api/file/PWoBT02ZSPiuJ1oasRUT",
+      logline: "Originally, we spiced the German apple Schnapps with Phillips Farm apple spread from the Union Square greenmarket. The Spread added complexity, but the recipe here works year-round.")
+    seed_drink = Drink.find_by_slug("apple-daiquiri")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Flor de Cana Silver Dry Rum").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lime Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Schonauer Apfel Schnapps").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.25, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Simple Syrup").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Plymouth Gin")
+    Ingredient.create(name: "Dolin Dry Vermouth")
+    Ingredient.create(name: "Luxardo Maraschino Liqueur")
+    Ingredient.create(name: "Orange Bitters")
+
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Tuxedo",
+      recipe: "Stir with ice and strain into a chilled, Vieux Pontarlier Absinthe-rinsed coupe. Garnish with a lemon twist and a cherry",
+      filepicker_url: "https://www.filepicker.io/api/file/TpT30v3oSw2mt3T7unuS",
+      logline: "The tuxedo's roots can be traced back to the Tuxedo Park Club, in New York's Ramapo Mountains, where the sporty look became all the rage.")
+    seed_drink = Drink.find_by_slug("tuxedo")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Plymouth Gin").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Dolin Dry Vermouth").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.25, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Luxardo Maraschino Liqueur").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "dashes", ingredient_id: Ingredient.find_by_name("Orange Bitters").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Rittenhouse Bonded Rye Whiskey")
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Whiskey Smash",
+      recipe: "Muddle the lemon wedges, mint leaves, and simple syrup. Add the rye, then shake with ice and fine-strain into a chilled rocks glass filled with ice. Garnish with a mint sprig.",
+      filepicker_url: "https://www.filepicker.io/api/file/ql1aDJ7NRYSo02oYtUqN",
+      logline: "Serve this to folks who proclaim they would never drink whiskey and see what happens.")
+    seed_drink = Drink.find_by_slug("whiskey-smash")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Rittenhouse Bonded Rye Whiskey").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 3, measurement_unit: "wedges", ingredient_id: Ingredient.find_by_name("Lemon").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Simple Syrup").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 6, measurement_unit: "leaves", ingredient_id: Ingredient.find_by_name("Mint Leaves").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Tanqueray Gin")
+    Ingredient.create(name: "Dolin Sweet Vermouth")
+    Ingredient.create(name: "Green Chartreuse")
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Bijou",
+      recipe: "Stir with ice and strain into a chilled coupe. Garnish with a cherry and a lemon twist",
+      filepicker_url: "https://www.filepicker.io/api/file/AvuZPt4S360pgCWmqoI2",
+      logline: "French for 'jewel', some believe the colors of the three primary ingredients represent precious stones: gin (diamond), sweet vermouth (ruby), and Green Chartreuse (emerald)")
+    seed_drink = Drink.find_by_slug("bijou")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Tanqueray Gin").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Dolin Sweet Vermouth").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Green Chartreuse").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "dash", ingredient_id: Ingredient.find_by_name("Orange Bitters").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Beefeater Gin")
+    Ingredient.create(name: "Carpano Antica Sweet Vermouth")
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Bronx",
+      recipe: "Shake with ice and strain into chilled coupe",
+      filepicker_url: "https://www.filepicker.io/api/file/HMPCKhheRyKivTx7Rsun",
+      logline: "The Bronx was named after the zoo, not the borough, and was one of the most popular drinks of its time")
+    seed_drink = Drink.find_by_slug("bronx")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Beefeater Gin").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Dolin Dry Vermouth").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Orange Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Carpano Antica Sweet Vermouth").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Famous Grouse Blended Scotch Whisky")
+    Ingredient.create(name: "Drambuie")
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Rusty Nail",
+      recipe: "Stir with ice and strain over a large cube into a chilled rocks glass. No garnish.",
+      filepicker_url: "https://www.filepicker.io/api/file/KRt489keSeOe8DZSolQe",
+      logline: "Originally known as the B.I.F. cocktail, it first appeared in 1937 but didn't get its current name until appearing in popular cocktail books in the 1970s.")
+    seed_drink = Drink.find_by_slug("rusty-nail")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Famous Grouse Blended Scotch Whisky").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Drambuie").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Elijah Craig 12-Year-Old-Bourbon")
+
+    User.find_by_email("guest").drinks.create!(
+      name: "Gold Rush",
+      recipe: "Shake with ice and strain over a large cube into a chilled rocks glass. No garnish.",
+      filepicker_url: "https://www.filepicker.io/api/file/MXu9BBlrTBmRj1JFQae0",
+      logline: "This will fundamentally change the way you view cocktails - T.J. Siegal, New York, circa 2000")
+    seed_drink = Drink.find_by_slug("gold-rush")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Elijah Craig 12-Year-Old-Bourbon").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.0, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Honey Syrup").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lemon Juice").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+
+
+    Ingredient.create(name: "Flor de Cana Silver Dry Rum")
+    Ingredient.create(name: "Coconut Sorbet")
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "Coconut Colada",
+      recipe: "Shake with ice and strain into a chilled coupe. Garnish with a lime wheel",
+      filepicker_url: "https://www.filepicker.io/api/file/A70MndQIRhaPUqRq5HW5",
+      logline: "It's like being on the beach, mon!")
+    seed_drink = Drink.find_by_slug("coconut-colada")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Flor de Cana Silver Dry Rum").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.0, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Pineapple Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lime Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "scoop", ingredient_id: Ingredient.find_by_name("Coconut Sorbet").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Siembra Azul Reposado Tequila")
+    Ingredient.create(name: "Viex Pontarlier Absinthe")
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "El Burro",
+      recipe: "Shake with ice and strain into a chilled Collins glass filled with ice. Garnish with a lime wheel and a piece of candied ginger.",
+      filepicker_url: "https://www.filepicker.io/api/file/6PG66ScNRpaDYSX6R17u",
+      logline: "A highball made with lime juice and ginger ale is a buck; substitute ginger beer for ale and it's a mule; add absinthe and you've got yourself a donkey.")
+    seed_drink = Drink.find_by_slug("el-burro")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Siembra Azul Reposado Tequila").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.0, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Ginger Beer").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lime Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Pineapple Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Simple Syrup").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.25, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Viex Pontarlier Absinthe").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Dr. Konstantin Frank Dry Riesling")
+    Ingredient.create(name: "Clear Creek Pear Brandy")
+    Ingredient.create(name: "Marie Brizard Orange Curacao")
+    Ingredient.create(name: "Peychaud's Bitters")
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "Falling Leaves",
+      recipe: "Stir with ice and strain into a chilled coupe. Garnish with a star anise pod.",
+      filepicker_url: "https://www.filepicker.io/api/file/5iHwKvnqStynQej47IUg",
+      logline: "Audrey Saunders created this autumnal, wine-based cocktail at Bemelman's Bar, in the Carlyle Hotel, in 2004.")
+    seed_drink = Drink.find_by_slug("falling-leaves")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Dr. Konstantin Frank Dry Riesling").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.0, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Clear Creek Pear Brandy").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Marie Brizard Orange Curacao").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.25, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Honey Syrup").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 3, measurement_unit: "dashes", ingredient_id: Ingredient.find_by_name("Peychaud's Bitters").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    Ingredient.create(name: "Siembra Azul Blanco Tequila")
+    Ingredient.create(name: "Theuriet Creme de Cassis")
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "El Diablo",
+      recipe: "Shake with ice and strain into a chilled rocks glass filled with ice.",
+      filepicker_url: "https://www.filepicker.io/api/file/Co6vOAPjRVCnr0eYHvcQ",
+      logline: "Trader Vic's revised bartender's manual devoted 9 pages to tequila drinks, 8 more than any other significant cocktail book of the century")
+    seed_drink = Drink.find_by_slug("el-diablo")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Siembra Azul Blanco Tequila").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.0, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Ginger Beer").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Theuriet Creme de Cassis").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lemon Juice").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "French 75",
+      recipe: "Shake with ice and strain into a chilled coupe. Top with 1 oz Moet Imperial Champagne. Garnish with a lemon twist.",
+      filepicker_url: "https://www.filepicker.io/api/file/Lmad67pBQKmIif4AFbbX",
+      logline: "Named after the French 75-millimeter gun, a revolutionary piece of artillery employed during World War I.")
+    seed_drink = Drink.find_by_slug("french-75")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Tanqueray Gin").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lemon Juice").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Simple Syrup").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "Gimlet",
+      recipe: "Shake with ice and strain into a chilled coupe. Garnish with a lime wheel.",
+      filepicker_url: "https://www.filepicker.io/api/file/hLc2upErQO6oqLe3yifP",
+      logline: "The Gimlet may have been named after British Royal Navy Surgeon General Sir Thomas Gimlette, who took his scurvy inhibitor with a tot of gin.")
+    seed_drink = Drink.find_by_slug("gimlet")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 2, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Plymouth Gin").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lime Cordial").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.75, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lime Juice").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+    Ingredient.create(name: "Wild Turkey Rye Whiskey")
+    Ingredient.create(name: "Lillet Blanc")
+    Ingredient.create(name: "Laird's Bonded Apple Brandy")
+    Ingredient.create(name: "Abbott's Bitters")
+
+    User.find(rand(User.count) + 1).drinks.create!(
+      name: "Harvest Moon",
+      recipe: "Stir with ice and strain into a chilled coupe. Garnish with an orange twist.",
+      filepicker_url: "https://www.filepicker.io/api/file/whTca4E7QCmhOiwEiblb",
+      logline: "This drink looks like the sky during the harvest moon -- when the reddish-orange moon (the orange twist) rises after sunset.")
+    seed_drink = Drink.find_by_slug("harvest-moon")
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Wild Turkey Rye Whiskey").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 1.0, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Lillet Blanc").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.5, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Laird's Bonded Apple Brandy").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 0.25, measurement_unit: "oz", ingredient_id: Ingredient.find_by_name("Green Chartreuse").id)
+    seed_drink.drink_ingredients.create(
+      measurement_amount: 3, measurement_unit: "dashes", ingredient_id: Ingredient.find_by_name("Abbott's Bitters").id)
+    seed_drink.save
+
+    seed_drink.drink_ingredients.each do |di|
+      unless di.ingredient_id.nil?
+        seed_drink.hidden_fields += (" " + Ingredient.find(di.ingredient_id).name)
+      end
+    end
+    seed_drink.save
+    ###########################
+
  
 
     Drink.all.count.times do |drink|
-      5.times do |x|
+      10.times do |x|
         r = rand(5) + 1
+        r = (rand(5) + 1) if r == 1 || r == 5
+
         if r == 1
           review = ["Terrible drink!", "BOGUS", "Grossinator", "Others bugger you!"].sample
         elsif r == 2
@@ -591,9 +999,15 @@ namespace :db do
         else
           review = ["Best drink ever!", "Totally righteous!", "Super awesome amazeballs!", "Tyrion himself would approve"].sample
         end
-        Drink.find(drink+1).comments.create(author_id: x + 2, rating: r, body: review)
+        Drink.find(drink+1).comments.create(author_id: x + 5, rating: r, body: review)
       end
       # Drink.average(drink)
+    end
+
+    10.times do |x|
+      drink = Drink.find(rand(Drink.count) + 1)
+      guest = User.find_by_email("guest")
+      guest.favorite_drinks << drink unless guest.favorite_drinks.include?(drink)
     end
 
   end

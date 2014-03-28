@@ -23,5 +23,5 @@
 	<%= simple_format(@drink.recipe) %>
 </p>
 <p>
-	Submitted by: <%= link_to User.find(@drink.user_id).email, user_url(@drink.user_id) %>
+	Submitted by: <%= link_to User.find(@drink.user_id).email, user_url(@drink.user) %>
 </p>
