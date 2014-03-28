@@ -6243,12 +6243,14 @@ div .review-item {
 .notifications {
   position: fixed;
   z-index: 100000;
+  padding: 30px;
+
 }
 
 /* Positioning */ 
 .notifications.top-right {
   right: 10px;
-  top: 25px;
+  top: 3%;
 }
 
 .notifications.top-left {
@@ -6404,4 +6406,8 @@ keyframes notification {
   right: -25px;
   color: #fff;
   content: 'x';
+}
+
+.popover {
+  z-index: 99999999999;
 }

@@ -10,17 +10,21 @@
 		      <%= render 'follow_form' if logged_in? %>
 				</h1>
 			</section>
-			
+			<section>
+				<ul class="nav nav-pills nav-stacked">
+				  <li class="active"><a href="#favorite-drinks" data-toggle="tab"><i class="fa fa-heart fa-fw"></i>
+				  	Favorite Drinks (<%= @user.favorite_drinks.count %>)</a></li>
+			  <li><a href="#submitted-drinks" data-toggle="tab"><i class="fa fa-tag fa-fw"></i>
+			  		Submitted Drinks (<%= @user.drinks.count %>)</a></li>
+			  <li><a href="#following" data-toggle="tab"><i class="fa fa-twitter fa-fw"></i>
+			  		Following (<%= @user.followed_users.count %>)</a></li>
+			  <li><a href="#followers" data-toggle="tab"><i class="fa fa-twitter fa-fw"></i>
+			  		Followers (<%= @user.followers.count %>)</a></li>
+				</ul>
+			</section>
 		</aside>
 
 		<div class="col-xs-8">
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs">
-			  <li class="active"><a href="#favorite-drinks" data-toggle="tab">Favorite Drinks (<%= @user.favorite_drinks.count %>)</a></li>
-			  <li><a href="#submitted-drinks" data-toggle="tab">Submitted Drinks (<%= @user.drinks.count %>)</a></li>
-			  <li><a href="#following" data-toggle="tab">Following (<%= @user.followed_users.count %>)</a></li>
-			  <li><a href="#followers" data-toggle="tab">Followers (<%= @user.followers.count %>)</a></li>
-			</ul>
 
 			<!-- Tab panes -->
 			<div class="tab-content" style="margin-top:20px">

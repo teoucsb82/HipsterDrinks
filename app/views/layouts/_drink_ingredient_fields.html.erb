@@ -1,0 +1,13 @@
+<li class="control-group nested-fields" style="margin-bottom: 5px; margin-left:-30px">
+  <div class="controls">
+    <%= f.text_field :measurement_amount, placeholder: "0", class: "drink_ingredient_form_field_amount" %>
+
+    <%= f.text_field :measurement_unit, value: "oz", class: "drink_ingredient_form_field_unit"  %>
+ 
+    <%= f.fields_for :ingredient do |dr_ingredient| %>
+      <%= dr_ingredient.text_field :name, placeholder: "ingredient name" %>
+    <% end %>
+
+    <%= link_to_remove_association "- remove ingredient", f, class: "btn btn-danger btn-sm" %>
+  </div>
+</li>
