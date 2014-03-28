@@ -1,5 +1,11 @@
 <div id="searchForm">
-  <form action="<%= drinks_url %>" role="search">
+  <form action="<%= drinks_url %>" role="search"
+    class="bootstro" 
+    data-bootstro-title="Search for a cocktail by name, alcohol or keyword" 
+    data-bootstro-content="Just search for whatever you're in the mood for and we're sure you'll find something tasty!" 
+    data-bootstro-step="1" 
+    data-original-title="" 
+      >
     <input type="text" name="search" id="search_box2" 
       placeholder="Search by drink name or ingredient(s)">
       <script>
@@ -8,6 +14,13 @@
           local: JSON.parse(temp)
         });
       </script>
-    <button type="submit" class="btn btn-sm btn-primary" value="Search" style="margin-top: 26px"><i class="fa fa-search fa-3x"></i></button>
+    <button type="submit" class="btn btn-sm btn-primary bootstro" 
+      data-bootstro-title="Welcome to HipsterDrinks.com!" 
+      data-bootstro-content="Sit back and have a drink while show you around a little!" 
+      data-bootstro-width="400px" 
+      data-bootstro-placement="bottom" 
+      data-bootstro-step="0" 
+      data-original-title="" 
+      value="Search"><i class="fa fa-search fa-3x"></i></button>
   </form>
 </div>

@@ -1,5 +1,12 @@
 <% counter = 0 %>
-<ul class="thumbnails" id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
+<hr>
+<h1 align="center">Top Drinks</h1>
+<ul class="thumbnails bootstro" 
+    data-bootstro-title="Check out our Top Drinks" 
+    data-bootstro-content="Only our finest cocktails make it to the main page. Mouse over any drink to learn more about it, or click it to see the recipe or leave a review"
+    data-bootstro-step="2" 
+    data-original-title="" 
+		id="hover-cap-4col" style="margin-left: 0; padding-left: 0" >
 	<% @top_drinks.each do |drink| %>
 		<% counter += 1 %>
 		<li class="col-xs-3" style="list-style:none; margin-left:0px">

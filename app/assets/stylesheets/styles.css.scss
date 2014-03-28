@@ -6183,7 +6183,14 @@ div .review-item {
 
 #searchForm {
   position:absolute;
-  top:40%;
+  top:50%;
+  margin-left: 200px;
+  z-index: 10000;
+}
+
+.tourGuide {
+  position:absolute;
+  top:75%;
   margin-left: 200px;
   z-index: 10000;
 }

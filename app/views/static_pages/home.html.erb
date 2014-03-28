@@ -10,10 +10,14 @@ $(document).ready(function(){
         function(){
             $(this).find('.caption').fadeOut(250); //.fadeOut(205)
         }
-    );    
+    );   
+
+    $('#tourButton').click(
+        function(){
+            bootstro.start()
+        }) ;
 });        
 </script>
-
 <%= render 'carousel' %>
 <div class="container" id="main-content">
 	<%= render 'topdrinks' %>
