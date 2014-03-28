@@ -9,7 +9,7 @@
 	        <h3 align="center"><%= link_to drink.name, drink_url(drink) %></h3>
 	        <p align="center"><%= link_to drink.logline, drink_url(drink) %></p>
 		    </div>
-		    <%= filepicker_image_tag drink.filepicker_url, w: 250, h: 250 %>
+		    <%= link_to (filepicker_image_tag drink.filepicker_url, w: 250, h: 250), drink %>
 		    
 		    <h4 align="center"><%= link_to drink.name, drink %></h4>
 		    

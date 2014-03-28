@@ -12,15 +12,15 @@
 	</head>
 	<body>
 		<%= render 'layouts/facebook_js_load' %>
-		
+		<%= render 'layouts/typeahead' %>
 		<%= render 'layouts/header' %>
 		<%= render 'layouts/errors' %>
 		<%= render 'sessions/form', :flag => :new %>
 		<%= render 'users/form', :flag => :new  %>
 		<%= render 'drinks/modal' %>
-
+		
 		<%= yield %>
 		<%#= render 'layouts/footer' %>
-		<%= render 'layouts/typeahead' %>
+		
 	</body>
 </html>
