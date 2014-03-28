@@ -15,8 +15,8 @@ Built on Rails and reinforced with jQuery, [HipsterDrinks](www.hipsterdrinks.com
 [] Implement subsections for "new drinks", "popular drinks", and tabbed sorting for "drinks by alcohol"
 [] Implement database caching
 [] Convert Filepicker.io database to Amazon S3
-
+[] Refactor code
 
 ## Bug fixes
 [] Edit page re-renders improperly.
-[] Z-index on drink create page is over Filepicker
+[X] Z-index on drink create page is over Filepicker
