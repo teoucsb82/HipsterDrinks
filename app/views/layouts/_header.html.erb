@@ -30,7 +30,14 @@
         <li><%= link_to "All Drinks", drinks_url %></li>
         
         <% if logged_in? %>
-          <li><button class="btn btn-primary header-button btn-sm" style="margin-top:10px" data-toggle="modal" data-target="#addDrinkModal"><i class="fa fa-plus-circle"></i> Create A Cocktail</button></li>
+          <li><button class="btn btn-primary header-button btn-sm bootstro" 
+            data-bootstro-title="Create A Cocktail" 
+            data-bootstro-content="You can submit new drinks easily by clicking 'Create A Cocktail' in the top header. Complete it with some ingredients, a description, and even a photo before submitting it to the database to be voted/reviewed." 
+            data-bootstro-width="400px" 
+            data-bootstro-placement="bottom" 
+            data-bootstro-step="2" 
+            data-original-title=""
+            style="margin-top:10px" data-toggle="modal" data-target="#addDrinkModal"><i class="fa fa-plus-circle"></i> Create A Cocktail</button></li>
         <% end %>       
       </ul>
     </div>

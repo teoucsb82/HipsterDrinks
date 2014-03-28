@@ -1,3 +1,12 @@
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#helpTour').click(
+    function(){
+      bootstro.start()
+    }) ;
+});        
+</script>
+
 <div class="container">
 	<% provide(:title, @user.email) %>
 	<div class="row">
@@ -6,13 +15,21 @@
 				<h1>
 				  <%= gravatar_for @user %>
 				  <%= @user.email %>
-				  <p ></p>
+				  <p></p>
 		      <%= render 'follow_form' if logged_in? %>
 				</h1>
 			</section>
 			<section>
 				<ul class="nav nav-pills nav-stacked">
-				  <li class="active"><a href="#favorite-drinks" data-toggle="tab"><i class="fa fa-heart fa-fw"></i>
+				  <li class="active"><a href="#favorite-drinks" data-toggle="tab"
+				  	class="bootstro" 
+			      data-bootstro-title="User Profile Help" 
+			      data-bootstro-content="The navbar on the left will help you navigate your pages. Browse your favorite drinks, review drinks you've submitted, or keep up with your followers' favorite drinks" 
+			      data-bootstro-width="400px" 
+			      data-bootstro-placement="bottom" 
+			      data-bootstro-step="0" 
+			      data-original-title=""
+      ><i class="fa fa-heart fa-fw"></i>
 				  	Favorite Drinks (<%= @user.favorite_drinks.count %>)</a></li>
 			  <li><a href="#submitted-drinks" data-toggle="tab"><i class="fa fa-tag fa-fw"></i>
 			  		Submitted Drinks (<%= @user.drinks.count %>)</a></li>
@@ -22,11 +39,21 @@
 			  		Followers (<%= @user.followers.count %>)</a></li>
 	  		<li><a href="#followers" data-toggle="modal" data-target="#addDrinkModal"><i class="fa fa-plus-circle fa-fw"></i>
 			  		Create a Cocktail</a></li>
+	  		<% if logged_in? %>
+		  		<li><a href="#help" data-toggle="tab" class="btn-danger" id="helpTour"><i class="fa fa-question-circle fa-fw"></i>
+			  		Help</a></li>
+	  		<% end %>
 				</ul>
 			</section>
 		</aside>
 
-		<div class="col-xs-8">
+		<div class="col-xs-8 bootstro" 
+			      data-bootstro-title="Browsing Tab" 
+			      data-bootstro-content="Your favorite drinks appear here. You can click the tabs on the left to change the view here" 
+			      data-bootstro-width="400px" 
+			      data-bootstro-placement="left" 
+			      data-bootstro-step="1" 
+			      data-original-title="">
 
 			<!-- Tab panes -->
 			<div class="tab-content" style="margin-top:20px">
