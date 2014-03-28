@@ -19,3 +19,4 @@ Built on Rails and reinforced with jQuery, [HipsterDrinks](www.hipsterdrinks.com
 
 ## Bug fixes
 [] Edit page re-renders improperly.
+[] Z-index on drink create page is over Filepicker

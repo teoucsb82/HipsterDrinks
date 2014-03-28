@@ -5117,7 +5117,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 500000050;
+  z-index: 10001;
   -webkit-overflow-scrolling: touch;
   outline: 0;
 }
@@ -6410,4 +6410,8 @@ keyframes notification {
 
 .popover {
   z-index: 99999999999;
+}
+
+#filepicker_dialog_container {
+  z-index: 999999;
 }
