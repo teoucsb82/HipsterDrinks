@@ -33,8 +33,9 @@ class UsersController < ApplicationController
 	end
 
 	def index
-		@users = User.search(params[:search])
-		render :index
+		redirect_to root_url
+		# @users = User.search(params[:search])
+		# render :index
 	end
 
 	def show

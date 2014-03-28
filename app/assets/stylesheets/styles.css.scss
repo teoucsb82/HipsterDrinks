@@ -6182,7 +6182,23 @@ div .review-item {
 #searchForm {
   position:absolute;
   top:40%;
-  margin-left: 400px;
+  margin-left: 200px;
+  z-index: 10000;
+}
+
+#frontPageHeader {
+  position:absolute;
+  top:20%;
+  margin-left: 200px;
+  z-index: 10000;
+  color: black;
+}
+
+#frontPageSubHeader {
+  position:absolute;
+  top:34%;
+  color: black;
+  margin-left: 200px;
   z-index: 10000;
 }
 

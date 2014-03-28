@@ -150,9 +150,9 @@ $(function () {
 				<!-- show gray'ed out form here instead -->
 				Please <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-window">Log In</button> to post a review. <br />
 				In a hurry?
-				<form action="<%= users_url %>" method="post">
+				<form action="<%= session_ur %>" method="post">
 	              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	              <input type="hidden" name="user[email]" value="<%= "guest-" + Faker::Name.first_name.to_s + "-" + rand(10000).to_s %>">
+	              <input type="hidden" name="user[email]" value="guest">
 	              <input type="hidden" name="user[password]" value="password">
 	              <input type="submit" value="Log In As Guest" class="btn btn-success btn-sm">
 	      </form>
