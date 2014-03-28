@@ -1,5 +1,5 @@
-<li class="col-xs-3" style="list-style:none; margin-left:0px">
-  <div class="thumbnail box">
+<li class="col-xs-4" style="list-style:none; margin-left:0px">
+  <div class="thumbnail">
     <div class="caption">
       <h3 align="center"><%= link_to drink.name, drink_url(drink) %></h3>
       <p align="center"><%= link_to drink.logline, drink_url(drink) %></p>
@@ -10,7 +10,7 @@
       <%= link_to (filepicker_image_tag drink.filepicker_url, w: 250, h: 250), drink %>
     <% end %>
     
-    <h4 align="center"><%= link_to drink.name, drink %></h4>
+    <h4 align="center"><%= drink.name %></h4>
     
     <center>
       <strong rel="tooltip" title="<%= drink.average %> Rating" data-placement="right">
